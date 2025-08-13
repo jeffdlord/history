@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NDJSON Dataset Builder (v2 – Safe Titles & Logging)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{ --bg:#0b0f14; --panel:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --accent:#38bdf8; --ok:#22c55e; --bad:#ef4444; --border:#1f2937; }
+  body{margin:0;background:linear-gradient(180deg,#0b0f14,#0b1118);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+  .wrap{max-width:980px;margin:0 auto;padding:1rem}
+  h1{font-size:1.4rem;margin:.5rem 0 1rem 0}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  label{display:block;margin:.35rem 0 .2rem;color:var(--muted);font-size:.9rem}
+  input,select,button,textarea{background:#0b131d;border:1px solid var(--border);color:var(--text);border-radius:.55rem;padding:.55rem .65rem;font-size:.95rem}
+  input,select{width:100%}
+  .row{display:grid;gap:.75rem;grid-template-columns:2fr 1fr 1fr 1fr}
+  .row2{display:grid;gap:.75rem;grid-template-columns:1fr 1fr}
+  .btns{display:flex;gap:.5rem;flex-wrap:wrap}
+  button{cursor:pointer}
+  button.primary{background:var(--accent);border-color:#67e8f9;color:#072230;font-weight:800}
+  .muted{color:var(--muted);font-size:.9rem}
+  textarea{width:100%;min-height:280px}
+  .log{white-space:pre-wrap;background:#0b131d;border:1px dashed var(--border);padding:.6rem;border-radius:.55rem;max-height:260px;overflow:auto}
+  .stat{display:inline-block;margin-right:.75rem;padding:.2rem .45rem;border-radius:.5rem;border:1px solid var(--border);background:#0b131d;font-size:.85rem}
+  .ok{color:var(--ok);border-color:rgba(34,197,94,.4)}
+  .bad{color:var(--bad);border-color:rgba(239,68,68,.4)}
+  .progress{height:8px;background:#0b131d;border:1px solid var(--border);border-radius:999px;overflow:hidden}
+  .bar{height:8px;background:var(--accent);width:0%}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>NDJSON Dataset Builder <span class="muted">(v2 – Safe Titles & Logging)</span></h1>
+  <div class="card" style="margin-bottom:1rem;">
+    <div class="row">
+      <div>
+        <label>Keyword / Topic</label>
+        <input id="kw" placeholder="e.g., physics, jazz, World War II, Taylor Swift" />
+      </div>
+      <div>
+        <label>Type</label>
+        <select id="type">
+          <option value="generic">Generic (best-effort year)</option>
+          <option value="song">Songs (needs performer + year)</option>
+          <option value="album">Albums (needs performer + year)</option>
+          <option value="people">People (birth & death entries)</option>
+        </select>
+      </div>
+      <div>
+        <label>Target count</label>
+        <input id="count" type="number" min="1" max="1000" value="250" />
+      </div>
+      <div>
+        <label>Category label</label>
+        <input id="cat" placeholder="e.g., Music, Physics (default: keyword)" />
+      </div>
+    </div>
+    <div class="row2" style="margin-top:.75rem;">
+      <div>
+        <label>Title template (Generic only)</label>
+        <input id="template" placeholder="e.g., ${label} — recorded in ${year}" />
+        <div class="muted">Vars: <code>${label}</code>, <code>${desc}</code>, <code>${year}</code></div>
+      </div>
+      <div>
+        <label>Notes</label>
+        <div class="muted">Album title format is always <em>Artist — 'Title' album released</em>. Songs omit the word “album”. People emits birth & death as separate lines.</div>
+      </div>
+    </div>
+    <div class="btns" style="margin-top:.9rem;">
+      <button id="go" class="primary">Generate</button>
+      <button id="stop">Stop</button>
+      <span class="stat ok" id="okc">OK: 0</span>
+      <span class="stat bad" id="skc">Skipped: 0</span>
+    </div>
+    <div class="progress" style="margin-top:.6rem;"><div class="bar" id="bar"></div></div>
+    <div class="muted" id="status" style="margin-top:.4rem;">Ready.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <label>NDJSON Output</label>
+    <textarea id="out" placeholder='Each line is a JSON object with {id,title,year,category,wiki}'></textarea>
+    <div class="btns" style="margin-top:.5rem;">
+      <button id="copy">Copy</button>
+      <button id="download">Download .ndjson</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <label>Log</label>
+    <div id="log" class="log"></div>
+  </div>
+</div>
+
+<script>
+// ===== Utilities & Safe String Helpers =====
+const sleep = (ms)=>new Promise(r=>setTimeout(r, ms));
+const logEl = document.getElementById('log');
+const statusEl = document.getElementById('status');
+const okEl = document.getElementById('okc');
+const skEl = document.getElementById('skc');
+const barEl = document.getElementById('bar');
+const outEl = document.getElementById('out');
+
+function log(s){ console.log('[builder]', s); logEl.textContent += s + "\n"; logEl.scrollTop = logEl.scrollHeight; }
+function setStatus(s){ statusEl.textContent = s; console.log('[status]', s); }
+const safe = (s)=> (s ?? '').toString();
+const safeQ = (s)=> `'${safe(s).replace(/'/g, "\u2019")}'`; // pretty curly apostrophe inside quotes
+function slug(s){ return safe(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
+function stripUndefined(s){ return safe(s).replace(/undefined/gi,'').replace(/\s+/g,' ').trim(); }
+
+// Make titles with NO undefined risk
+function makeSongTitle(artist, title){
+  if (!artist || !title) return null;
+  return stripUndefined(`${safe(artist)} — ${safeQ(title)} released`);
+}
+function makeAlbumTitle(artist, title){
+  if (!artist || !title) return null;
+  return stripUndefined(`${safe(artist)} — ${safeQ(title)} album released`);
+}
+
+// ===== Minimal Wikidata/Wikipedia accessors =====
+async function jget(url){
+  const r = await fetch(url, {headers:{'accept':'application/sparql-results+json, application/json;q=0.9, */*;q=0.1'}});
+  if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
+  return await r.json();
+}
+function enwikiFromEntity(ent){
+  const k = Object.keys(ent.entities||{})[0];
+  const en = ent?.entities?.[k]?.sitelinks?.enwiki;
+  if (!en) return null;
+  return 'https://en.wikipedia.org/wiki/' + encodeURIComponent(en.title.replace(/ /g,'_'));
+}
+function first(claims){ return Array.isArray(claims) && claims.length ? claims[0] : null; }
+function yearFromTimeValue(w){ if (!w||!w.time) return null; const m = String(w.time).match(/([+-]?\d{1,6})-\d{2}-\d{2}/); return m? parseInt(m[1],10): null; }
+
+async function getEntity(qid){
+  const url = `https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&origin=*&props=labels|claims|sitelinks&ids=${encodeURIComponent(qid)}&sitefilter=enwiki`;
+  return await jget(url);
+}
+async function searchWikidata(keyword, type){
+  const SERVICE = 'https://query.wikidata.org/sparql?format=json&query=';
+  const safeKw = keyword.replace(/["\\]/g,'\\$&');
+  let filter = '';
+  if (type==='song') filter = ' ?item wdt:P31 wd:Q7366 . ';
+  else if (type==='album') filter = ' ?item wdt:P31 wd:Q482994 . ';
+  else if (type==='people') filter = ' ?item wdt:P31 wd:Q5 . ';
+  const q = `SELECT ?item ?itemLabel WHERE { ?item rdfs:label ?label . FILTER(CONTAINS(LCASE(?label), LCASE("${safeKw}"))). FILTER(LANG(?label) = "en"). ${filter} } LIMIT 500`;
+  const data = await jget(SERVICE + encodeURIComponent(q));
+  return data.results.bindings.map(b=>({ qid: b.item.value.split('/').pop(), label: b.itemLabel.value }));
+}
+
+// ===== Builders (Songs/Albums/People/Generic) =====
+function getClaims(ent, pid){ const k = Object.keys(ent.entities||{})[0]; return ent?.entities?.[k]?.claims?.[pid] || null; }
+function enLabel(ent){ const k = Object.keys(ent.entities||{})[0]; return ent?.entities?.[k]?.labels?.en?.value || null; }
+
+async function buildSong(qid, category){
+  const ent = await getEntity(qid);
+  const wiki = enwikiFromEntity(ent); if (!wiki) return {skip:'no enwiki'};
+  const title = enLabel(ent); if (!title) return {skip:'no title'};
+  const perf = first(getClaims(ent,'P175')); if (!perf) return {skip:'no performer'};
+  const pid = perf.mainsnak?.datavalue?.value?.id; if (!pid) return {skip:'no performer id'};
+  const perfEnt = await getEntity(pid);
+  const artist = enLabel(perfEnt); if (!artist) return {skip:'no artist label'};
+  const rel = first(getClaims(ent,'P577'));
+  const year = yearFromTimeValue(rel?.mainsnak?.datavalue?.value); if (!year) return {skip:'no year'};
+  const titleText = makeSongTitle(artist, title); if (!titleText) return {skip:'bad title build'};
+  return { id:`${slug(artist)}-${slug(title)}-${year}`, title:titleText, year, category, wiki };
+}
+
+async function buildAlbum(qid, category){
+  const ent = await getEntity(qid);
+  const wiki = enwikiFromEntity(ent); if (!wiki) return {skip:'no enwiki'};
+  const title = enLabel(ent); if (!title) return {skip:'no title'};
+  const perf = first(getClaims(ent,'P175')); if (!perf) return {skip:'no performer'};
+  const pid = perf.mainsnak?.datavalue?.value?.id; if (!pid) return {skip:'no performer id'};
+  const perfEnt = await getEntity(pid);
+  const artist = enLabel(perfEnt); if (!artist) return {skip:'no artist label'};
+  const rel = first(getClaims(ent,'P577'));
+  const year = yearFromTimeValue(rel?.mainsnak?.datavalue?.value); if (!year) return {skip:'no year'};
+  const titleText = makeAlbumTitle(artist, title); if (!titleText) return {skip:'bad title build'};
+  return { id:`${slug(artist)}-${slug(title)}-${year}`, title:titleText, year, category, wiki };
+}
+
+async function buildPerson(qid, category){
+  const ent = await getEntity(qid);
+  const wiki = enwikiFromEntity(ent); if (!wiki) return {skip:'no enwiki'};
+  const name = enLabel(ent); if (!name) return {skip:'no name'};
+  const b = first(getClaims(ent,'P569')); const d = first(getClaims(ent,'P570'));
+  const by = yearFromTimeValue(b?.mainsnak?.datavalue?.value);
+  const dy = yearFromTimeValue(d?.mainsnak?.datavalue?.value);
+  const out = [];
+  if (by) out.push({ id:`${slug(name)}-born-${by}`, title: stripUndefined(`${safe(name)} born`), year:by, category, wiki });
+  if (dy) out.push({ id:`${slug(name)}-died-${dy}`, title: stripUndefined(`${safe(name)} died`), year:dy, category, wiki });
+  return out.length ? out : {skip:'no birth/death year'};
+}
+
+async function buildGeneric(qid, category, tpl){
+  const ent = await getEntity(qid);
+  const wiki = enwikiFromEntity(ent); if (!wiki) return {skip:'no enwiki'};
+  const lbl = enLabel(ent); if (!lbl) return {skip:'no label'};
+  const rels = ['P577','P571','P585','P580'].map(pid=> first(getClaims(ent,pid)));
+  let year = null; for (const r of rels){ const y = yearFromTimeValue(r?.mainsnak?.datavalue?.value); if (y){ year=y; break; } }
+  if (!year){ const m = String(lbl).match(/(\d{4})/); if (m) year = parseInt(m[1],10); }
+  if (!year) return {skip:'no year'};
+  let title = (tpl && tpl.includes('${')) ? tpl.replaceAll('${label}', safe(lbl)).replaceAll('${desc}','').replaceAll('${year}', String(year)) : safe(lbl);
+  title = stripUndefined(title);
+  return { id:`${slug(lbl)}-${year}`, title, year, category, wiki };
+}
+
+// ===== UI Wiring & Flow =====
+let abortFlag = false;
+const btnGo = document.getElementById('go');
+const btnStop = document.getElementById('stop');
+const btnCopy = document.getElementById('copy');
+const btnDownload = document.getElementById('download');
+
+btnStop.onclick = ()=>{ abortFlag = true; setStatus('Stopping after current item…'); };
+
+btnGo.onclick = async ()=>{
+  abortFlag = false;
+  logEl.textContent = ''; outEl.value = ''; barEl.style.width = '0%';
+  okEl.textContent = 'OK: 0'; skEl.textContent = 'Skipped: 0';
+  const keyword = document.getElementById('kw').value.trim();
+  const type = document.getElementById('type').value;
+  const target = Math.max(1, Math.min(1000, parseInt(document.getElementById('count').value,10) || 250));
+  const category = (document.getElementById('cat').value.trim() || (keyword? keyword[0].toUpperCase()+keyword.slice(1) : 'Misc'));
+  const tpl = document.getElementById('template').value.trim();
+  if (!keyword){ alert('Please enter a keyword.'); return; }
+
+  setStatus('Searching Wikidata…');
+  log(`Searching for "${keyword}" (${type}) …`);
+  let hits = [];
+  try{ hits = await searchWikidata(keyword, type); }
+  catch(err){ log(`Search error: ${err.message}`); setStatus('Search failed.'); return; }
+  if (!hits.length){ log('No matches.'); setStatus('No matches.'); return; }
+  log(`Found ${hits.length} candidate entities.`);
+
+  const builders = { song: buildSong, album: buildAlbum, people: buildPerson, generic: async (qid)=> buildGeneric(qid, category, tpl) };
+  const build = builders[type];
+
+  let ok = 0, skipped = 0; const lines = []; const usedIds = new Set();
+  for (let i=0;i<hits.length;i++){
+    if (abortFlag) break;
+    const {qid, label} = hits[i];
+    setStatus(`Processing ${i+1}/${hits.length} — ${qid} ${label}`);
+    try{
+      let res = await build(qid, category);
+      const pushOne = (obj)=>{
+        // Final sanitation pass (no undefined, trim spaces)
+        obj.title = stripUndefined(obj.title);
+        if (!obj.title || !obj.wiki || !obj.year) return false;
+        const id = obj.id || `${slug(obj.title)}-${obj.year}`;
+        if (usedIds.has(id)) return false;
+        usedIds.add(id); obj.id = id;
+        lines.push(JSON.stringify(obj));
+        return true;
+      };
+      if (Array.isArray(res)){
+        for (const r of res){ if (pushOne(r)) ok++; else skipped++; }
+      } else if (res && !res.skip){ if (pushOne(res)) ok++; else skipped++; }
+      else { skipped++; log(`Skip ${qid} (${label}): ${res?.skip || 'unknown'}`); }
+    }catch(e){ skipped++; log(`Error ${qid} (${label}): ${e.message}`); }
+
+    okEl.textContent = `OK: ${ok}`; skEl.textContent = `Skipped: ${skipped}`;
+    barEl.style.width = Math.round(((i+1)/hits.length)*100) + '%';
+    if (ok >= target) break;
+    await sleep(120); // be kind to APIs
+  }
+
+  outEl.value = lines.join('\n');
+  setStatus(`Done. ${ok} kept, ${skipped} skipped.`);
+  log(`Kept ${ok}, skipped ${skipped}.`);
+};
+
+btnCopy.onclick = async ()=>{
+  try{ await navigator.clipboard.writeText(outEl.value || ''); setStatus('Copied to clipboard.'); }
+  catch{ setStatus('Copy failed (permissions).'); }
+};
+
+btnDownload.onclick = ()=>{
+  const blob = new Blob([outEl.value || ''], {type:'application/x-ndjson;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'dataset.ndjson'; a.click(); URL.revokeObjectURL(a.href);
+  setStatus('Download started.');
+};
+</script>
+</body>
+</html>
