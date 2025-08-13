@@ -1,347 +1,357 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>First Things First</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>First Things First — v70</title>
 <style>
-    :root{
-      --bg:#0b0f14;
-      --card:#111827;
-      --muted:#94a3b8;
-      --text:#e5e7eb;
-      --accent:#38bdf8;
-      --good:#22c55e;
-      --bad:#ef4444;
-      --border:#1f2937;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;background:linear-gradient(180deg,#0b0f14,#0b1118);
-      color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-    }
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .topbar{position:sticky;top:0;z-index:10;background:rgba(10,14,20,.85);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
-    .topwrap{display:flex;gap:.5rem;align-items:center;justify-content:space-between;max-width:900px;margin:0 auto;padding:.6rem .9rem}
-    .logo{font-weight:800;letter-spacing:.5px;font-size:1.2rem;cursor:pointer}
-    .actions{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
-    button, select{
-      background:#0f172a;color:var(--text);border:1px solid var(--border);
-      border-radius:.65rem;padding:.55rem .7rem;font-weight:600;cursor:pointer;
-    }
-    button:hover{border-color:#334155}
-    .btn-accent{background:var(--accent);color:#072230;border:1px solid #67e8f9}
-    .btn-accent:hover{filter:brightness(1.05)}
-    .container{max-width:900px;margin:0 auto;padding:1rem .9rem}
-    .bar{display:grid;grid-template-columns:1fr auto;gap:.5rem;align-items:center;margin:.6rem 0 .6rem}
-    .chip{background:#0f172a;border:1px solid var(--border);padding:.35rem .6rem;border-radius:999px;font-size:.9rem;margin-right:.35rem}
-    .progress{font-size:.9rem;color:var(--muted);display:none}
-    .deck{position:relative;height:58vh;max-height:560px;margin:10px 0}
-    .card{
-      position:absolute;inset:0;margin:auto;background:radial-gradient(120% 120% at 100% 0%, #0f1824 0%, #0b0f14 55%);
-      border:1px solid var(--border);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.35);
-      padding:1.1rem;display:flex;flex-direction:column;justify-content:space-between;transform-origin:50% 90%;
-      touch-action:none;
-    }
-    .card:not(.active){opacity:0;pointer-events:none}
-    .versus{display:grid;gap:1rem}
-    .evt{background:#0b131d;border:1px dashed #1e293b;border-radius:14px;padding:.85rem}
-    .evt h3{margin:.1rem 0;font-size:1.05rem;line-height:1.25}
-    .evt .meta{font-size:.85rem;color:var(--muted)}
-    .big{text-align:center;font-weight:800;letter-spacing:.5px;font-size:1.05rem;color:#cbd5e1}
-    .result{
-      position:absolute;top:.8rem;left:50%;transform:translateX(-50%);
-      padding:.35rem .6rem;border-radius:999px;font-weight:800;border:1px solid #073; background:rgba(34,197,94,.12);color:var(--good);
-      box-shadow:0 6px 18px rgba(34,197,94,.25);display:none
-    }
-    .result.bad{border-color:#521414;background:rgba(239,68,68,.12);color:var(--bad);box-shadow:0 6px 18px rgba(239,68,68,.25)}
-    .footer{display:flex;align-items:center;justify-content:flex-end;margin-top:.75rem;color:var(--muted);font-size:.9rem}
-    .settings{background:#0b131d;border:1px solid var(--border);border-radius:14px;padding:.75rem;display:none;margin-top:.75rem}
-    .grid{display:grid;gap:.6rem}
-    .two{grid-template-columns:1fr 1fr}
-    @media (max-width:720px){ .two{grid-template-columns:1fr} }
-    .tiny{font-size:.8rem;color:var(--muted)}
-    .toast{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#0b131d;border:1px solid var(--border);padding:.6rem .8rem;border-radius:.7rem;color:var(--text);opacity:0;pointer-events:none;transition:opacity .25s ease}
-    .toast.show{opacity:1}
-    .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.4rem .8rem}
-    .checks label{display:flex;align-items:center;gap:.5rem}
-  </style>
+  :root{
+    --bg:#0b0f14;
+    --card:#111827;
+    --muted:#94a3b8;
+    --text:#e5e7eb;
+    --accent:#38bdf8;
+    --good:#22c55e;
+    --bad:#ef4444;
+    --border:#1f2937;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:linear-gradient(180deg,#0b0f14,#0b1118);
+    color:var(--text);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .topbar{position:sticky;top:0;z-index:10;background:rgba(10,14,20,.85);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+  .topwrap{display:flex;gap:.5rem;align-items:center;justify-content:space-between;max-width:900px;margin:0 auto;padding:.6rem .9rem}
+  .logo{font-weight:800;letter-spacing:.5px;font-size:1.2rem;cursor:pointer}
+  .actions{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+  button, select{
+    background:#0f172a;color:var(--text);border:1px solid var(--border);
+    border-radius:.65rem;padding:.55rem .7rem;font-weight:600;cursor:pointer;
+  }
+  button:hover{border-color:#334155}
+  .btn-accent{background:var(--accent);color:#072230;border:1px solid #67e8f9}
+  .btn-accent:hover{filter:brightness(1.05)}
+  .container{max-width:900px;margin:0 auto;padding:1rem .9rem}
+  .bar{display:grid;grid-template-columns:1fr auto;gap:.5rem;align-items:center;margin:.6rem 0 .6rem}
+  .chip{background:#0f172a;border:1px solid var(--border);padding:.35rem .6rem;border-radius:999px;font-size:.9rem;margin-right:.35rem}
+  .progress{font-size:.9rem;color:var(--muted);display:none}
+  .deck{position:relative;height:58vh;max-height:560px;margin:10px 0}
+  .card{
+    position:absolute;inset:0;margin:auto;background:radial-gradient(120% 120% at 100% 0%, #0f1824 0%, #0b0f14 55%);
+    border:1px solid var(--border);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.35);
+    padding:1.1rem;display:flex;flex-direction:column;justify-content:space-between;transform-origin:50% 90%;
+    touch-action:none;
+  }
+  .card:not(.active){opacity:0;pointer-events:none}
+  .versus{display:grid;gap:1rem}
+  .evt{background:#0b131d;border:1px dashed #1e293b;border-radius:14px;padding:.85rem}
+  .evt h3{margin:.1rem 0;font-size:1.05rem;line-height:1.25}
+  .evt .meta{font-size:.85rem;color:var(--muted)}
+  .big{text-align:center;font-weight:800;letter-spacing:.5px;font-size:1.05rem;color:#cbd5e1}
+  .result{
+    position:absolute;top:.8rem;left:50%;transform:translateX(-50%);
+    padding:.35rem .6rem;border-radius:999px;font-weight:800;border:1px solid #073; background:rgba(34,197,94,.12);color:var(--good);
+    box-shadow:0 6px 18px rgba(34,197,94,.25);display:none
+  }
+  .result.bad{border-color:#521414;background:rgba(239,68,68,.12);color:var(--bad);box-shadow:0 6px 18px rgba(239,68,68,.25)}
+  .footer{display:flex;align-items:center;justify-content:flex-end;margin-top:.75rem;color:var(--muted);font-size:.9rem}
+  .settings{background:#0b131d;border:1px solid var(--border);border-radius:14px;padding:.75rem;display:none;margin-top:.75rem}
+  .grid{display:grid;gap:.6rem}
+  .two{grid-template-columns:1fr 1fr}
+  @media (max-width:720px){ .two{grid-template-columns:1fr} }
+  .tiny{font-size:.8rem;color:var(--muted)}
+  .toast{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#0b131d;border:1px solid var(--border);padding:.6rem .8rem;border-radius:.7rem;color:var(--text);opacity:0;pointer-events:none;transition:opacity .25s ease}
+  .toast.show{opacity:1}
+  .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.4rem .8rem}
+  .checks label{display:flex;align-items:center;gap:.5rem}
+  .version{font-size:.8rem;color:var(--muted);margin-left:.5rem}
+</style>
 </head>
 <body>
 <header class="topbar">
-<div class="topwrap">
-<div class="logo-wrap" style="display:flex;align-items:center;gap:.5rem;"><div class="logo" id="btnFirst" title="First Things First">First Things First</div><button id="btnSettings" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:#0f172a;border:1px solid var(--border);border-radius:.55rem;" title="Settings" type="button">⚙</button></div>
-<div class="actions">
-<button class="btn-accent" id="btnNew">New game</button>
-</div>
-</div>
+  <div class="topwrap">
+    <div class="logo-wrap" style="display:flex;align-items:center;gap:.5rem;">
+      <div class="logo" id="btnFirst" title="First Things First">First Things First</div>
+      <span class="version">v70</span>
+      <button id="btnSettings" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:#0f172a;border:1px solid var(--border);border-radius:.55rem;" title="Settings" type="button">⚙</button>
+    </div>
+    <div class="actions">
+      <button class="btn-accent" id="btnNew">New game</button>
+    </div>
+  </div>
 </header>
 <main class="container">
-<div class="bar">
-<div>
-<span class="chip" id="chipScore">Score: 0</span>
-<span class="chip" id="chipStreak">Streak: 0</span>
-<span class="chip" id="chipRemaining">0 left</span>
-</div>
-<div class="progress" id="progress">Loading data… 0%</div>
-</div>
-<section class="settings" id="settings">
-<div class="grid two">
-<div>
-<label for="selDifficulty">Difficulty</label>
-<select id="selDifficulty">
-<option value="easy">Easy (big gaps)</option>
-<option selected="" value="normal">Normal</option>
-<option value="hard">Hard (closer in time)</option>
-<option value="expert">Expert (very close)</option>
-</select>
-</div>
-<div>
-<label>Categories</label>
-<div class="checks" id="catChecks"></div>
-<div class="tiny">Checked categories only; each question uses events from the same category.</div>
-</div>
-</div>
-</section>
-<div id="lastResult" style="margin-bottom:.75rem;"></div>
-<div class="deck" id="deck">
-<div class="card active" id="card">
-<div class="result" id="result">CORRECT</div>
-<div class="versus">
-<div class="evt" id="evtA">
-<div class="meta" id="catA">Category</div>
-<h3 id="titleA">Event A</h3>
-<div class="meta" id="srcA"></div>
-</div>
-<div class="big" id="midLabel">Before ← → After</div>
-<div class="evt" id="evtB">
-<div class="meta" id="catB">Category</div>
-<h3 id="titleB">Event B</h3>
-<div class="meta" id="srcB"></div>
-</div>
-</div>
-</div>
-</div>
+  <div class="bar">
+    <div>
+      <span class="chip" id="chipScore">Score: 0</span>
+      <span class="chip" id="chipStreak">Streak: 0</span>
+      <span class="chip" id="chipRemaining">0 left</span>
+    </div>
+    <div class="progress" id="progress">Loading data… 0%</div>
+  </div>
+
+  <section class="settings" id="settings">
+    <div class="grid two">
+      <div>
+        <label for="selDifficulty">Difficulty</label>
+        <select id="selDifficulty">
+          <option value="easy">Easy (big gaps)</option>
+          <option value="normal" selected>Normal</option>
+          <option value="hard">Hard (closer in time)</option>
+          <option value="expert">Expert (very close)</option>
+        </select>
+      </div>
+      <div>
+        <label>Categories</label>
+        <div class="checks" id="catChecks"></div>
+        <div class="tiny">Checked categories only; each question uses events from the same category.</div>
+      </div>
+    </div>
+  </section>
+
+  <div id="lastResult" style="margin-bottom:.75rem;"></div>
+
+  <div class="deck" id="deck">
+    <div class="card active" id="card">
+      <div class="result" id="result">CORRECT</div>
+      <div class="versus">
+        <div class="evt" id="evtA">
+          <div class="meta" id="catA">Category</div>
+          <h3 id="titleA">Event A</h3>
+          <div class="meta" id="srcA"></div>
+        </div>
+        <div class="big" id="midLabel">Before ← → After</div>
+        <div class="evt" id="evtB">
+          <div class="meta" id="catB">Category</div>
+          <h3 id="titleB">Event B</h3>
+          <div class="meta" id="srcB"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 <div class="toast" id="toast">Loaded extra data</div>
+
 <script>
-  const $ = sel => document.querySelector(sel);
-  const sleep = ms => new Promise(r=>setTimeout(r, ms));
-  const clamp = (n,min,max)=>Math.min(Math.max(n,min),max);
+/* ===== Utilities ===== */
+const $ = sel => document.querySelector(sel);
+const sleep = ms => new Promise(r=>setTimeout(r, ms));
+const clamp = (n,min,max)=>Math.min(Math.max(n,min),max);
+function escapeHtml(s){ return String(s||'').replace(/[&<>\"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[m])); }
 
-  // ---- Seed data (quick start) ----
-  const seedData = [
-    {id:'h1', title:'Fall of the Berlin Wall', year:1989, category:'History', wiki:'https://en.wikipedia.org/wiki/Berlin_Wall'},
-    {id:'h2', title:'U.S. Declaration of Independence', year:1776, category:'History', wiki:'https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence'},
-    {id:'h3', title:'Start of World War II (Europe)', year:1939, category:'History', wiki:'https://en.wikipedia.org/wiki/World_War_II'},
-    {id:'h4', title:'First modern Olympic Games (Athens)', year:1896, category:'History', wiki:'https://en.wikipedia.org/wiki/1896_Summer_Olympics'},
-    {id:'h5', title:'Women gain the right to vote in the U.S. (19th Amendment)', year:1920, category:'History', wiki:'https://en.wikipedia.org/wiki/Nineteenth_Amendment_to_the_United_States_Constitution'},
+/* ===== Seed data (instant start, works offline) ===== */
+const seedData = [
+  {id:'h1', title:'Fall of the Berlin Wall', year:1989, category:'History', wiki:'https://en.wikipedia.org/wiki/Berlin_Wall'},
+  {id:'h2', title:'U.S. Declaration of Independence', year:1776, category:'History', wiki:'https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence'},
+  {id:'h3', title:'Start of World War II (Europe)', year:1939, category:'History', wiki:'https://en.wikipedia.org/wiki/World_War_II'},
+  {id:'h4', title:'First modern Olympic Games (Athens)', year:1896, category:'History', wiki:'https://en.wikipedia.org/wiki/1896_Summer_Olympics'},
+  {id:'h5', title:'19th Amendment (U.S. women\'s suffrage)', year:1920, category:'History', wiki:'https://en.wikipedia.org/wiki/Nineteenth_Amendment_to_the_United_States_Constitution'},
 
-    {id:'s1', title:'Einstein publishes Special Relativity', year:1905, category:'Science', wiki:'https://en.wikipedia.org/wiki/Special_relativity'},
-    {id:'s2', title:'Watson and Crick propose DNA double helix', year:1953, category:'Science', wiki:'https://en.wikipedia.org/wiki/DNA'},
-    {id:'s3', title:'Apollo 11 Moon landing', year:1969, category:'Science', wiki:'https://en.wikipedia.org/wiki/Apollo_11'},
-    {id:'s4', title:'Hubble Space Telescope launch', year:1990, category:'Science', wiki:'https://en.wikipedia.org/wiki/Hubble_Space_Telescope'},
-    {id:'s5', title:'First image of a black hole published (M87*)', year:2019, category:'Science', wiki:'https://en.wikipedia.org/wiki/Messier_87#Black_hole'},
+  {id:'s1', title:'Einstein publishes Special Relativity', year:1905, category:'Science', wiki:'https://en.wikipedia.org/wiki/Special_relativity'},
+  {id:'s2', title:'DNA double helix proposed', year:1953, category:'Science', wiki:'https://en.wikipedia.org/wiki/DNA'},
+  {id:'s3', title:'Apollo 11 Moon landing', year:1969, category:'Science', wiki:'https://en.wikipedia.org/wiki/Apollo_11'},
+  {id:'s4', title:'Hubble Space Telescope launch', year:1990, category:'Science', wiki:'https://en.wikipedia.org/wiki/Hubble_Space_Telescope'},
+  {id:'s5', title:'First image of a black hole (M87*)', year:2019, category:'Science', wiki:'https://en.wikipedia.org/wiki/Messier_87#Black_hole'},
 
-    {id:'i1', title:'Invention of the telephone (Bell patent)', year:1876, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Telephone'},
-    {id:'i2', title:'First powered flight (Wright brothers)', year:1903, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Wright_brothers'},
-    {id:'i3', title:'First commercial microprocessor (Intel 4004)', year:1971, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Intel_4004'},
-    {id:'i4', title:'World Wide Web proposed by Tim Berners-Lee', year:1989, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/World_Wide_Web'},
-    {id:'i5', title:'First iPhone announced', year:2007, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/IPhone_(1st_generation)'},
+  {id:'i1', title:'Telephone patent (Bell)', year:1876, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Telephone'},
+  {id:'i2', title:'First powered flight (Wright brothers)', year:1903, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Wright_brothers'},
+  {id:'i3', title:'Intel 4004 microprocessor', year:1971, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Intel_4004'},
+  {id:'i4', title:'World Wide Web proposed', year:1989, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/World_Wide_Web'},
+  {id:'i5', title:'First iPhone announced', year:2007, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/IPhone_(1st_generation)'},
 
-    {id:'b1', title:'Isaac Newton born', year:1643, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Isaac_Newton'},
-    {id:'b2', title:'Albert Einstein born', year:1879, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Albert_Einstein'},
-    {id:'b3', title:'Marie Curie born', year:1867, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Marie_Curie'},
-    {id:'b4', title:'Ada Lovelace born', year:1815, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Ada_Lovelace'},
-    {id:'b5', title:'Martin Luther King Jr. born', year:1929, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.'},
+  {id:'b1', title:'Isaac Newton born', year:1643, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Isaac_Newton'},
+  {id:'b2', title:'Albert Einstein born', year:1879, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Albert_Einstein'},
+  {id:'b3', title:'Marie Curie born', year:1867, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Marie_Curie'},
+  {id:'b4', title:'Ada Lovelace born', year:1815, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Ada_Lovelace'},
+  {id:'b5', title:'Martin Luther King Jr. born', year:1929, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.'},
 
-    {id:'m1', title:'The Beatles release Sgt. Pepper\'s Lonely Hearts Club Band', year:1967, category:'Music', wiki:'https://en.wikipedia.org/wiki/Sgt._Pepper%27s_Lonely_Hearts_Club_Band'},
-    {id:'m2', title:'Michael Jackson\'s Thriller album released', year:1982, category:'Music', wiki:'https://en.wikipedia.org/wiki/Thriller_(Michael_Jackson_album)'},
-    {id:'m3', title:'Nirvana releases Nevermind', year:1991, category:'Music', wiki:'https://en.wikipedia.org/wiki/Nevermind'},
-    {id:'m4', title:'Beyoncé releases Lemonade', year:2016, category:'Music', wiki:'https://en.wikipedia.org/wiki/Lemonade_(Beyonc%C3%A9_album)'},
-    {id:'m5', title:'Taylor Swift releases 1989', year:2014, category:'Music', wiki:'https://en.wikipedia.org/wiki/1989_(Taylor_Swift_album)'},
+  // Close-gap variants
+  {id:'h6', title:'German reunification', year:1990, category:'History', wiki:'https://en.wikipedia.org/wiki/German_reunification'},
+  {id:'h7', title:'Dissolution of the Soviet Union', year:1991, category:'History', wiki:'https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union'},
+  {id:'h8', title:'U.S. enters World War II', year:1941, category:'History', wiki:'https://en.wikipedia.org/wiki/United_States_in_World_War_II'},
+  {id:'h9', title:'V-J Day (end of WWII)', year:1945, category:'History', wiki:'https://en.wikipedia.org/wiki/V-J_Day'},
 
-    // HISTORY (close gaps)
-    {id:'h6', title:'German reunification', year:1990, category:'History', wiki:'https://en.wikipedia.org/wiki/German_reunification'},
-    {id:'h7', title:'Dissolution of the Soviet Union', year:1991, category:'History', wiki:'https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union'},
-    {id:'h8', title:'U.S. enters World War II', year:1941, category:'History', wiki:'https://en.wikipedia.org/wiki/United_States_in_World_War_II'},
-    {id:'h9', title:'End of World War II (V-J Day)', year:1945, category:'History', wiki:'https://en.wikipedia.org/wiki/V-J_Day'},
+  {id:'s6', title:'Hubble Servicing Mission STS-61', year:1993, category:'Science', wiki:'https://en.wikipedia.org/wiki/STS-61'},
+  {id:'s7', title:'Mars Pathfinder lands', year:1997, category:'Science', wiki:'https://en.wikipedia.org/wiki/Mars_Pathfinder'},
+  {id:'s8', title:'Curiosity rover lands on Mars', year:2012, category:'Science', wiki:'https://en.wikipedia.org/wiki/Curiosity_(rover)'},
+  {id:'s9', title:'First gravitational waves observed', year:2016, category:'Science', wiki:'https://en.wikipedia.org/wiki/First_observation_of_gravitational_waves'},
 
-    // SCIENCE (close gaps)
-    {id:'s6', title:'Hubble First Servicing Mission (STS-61)', year:1993, category:'Science', wiki:'https://en.wikipedia.org/wiki/STS-61'},
-    {id:'s7', title:'Mars Pathfinder lands', year:1997, category:'Science', wiki:'https://en.wikipedia.org/wiki/Mars_Pathfinder'},
-    {id:'s8', title:'Curiosity rover lands on Mars', year:2012, category:'Science', wiki:'https://en.wikipedia.org/wiki/Curiosity_(rover)'},
-    {id:'s9', title:'First gravitational waves detected (GW150914 announced)', year:2016, category:'Science', wiki:'https://en.wikipedia.org/wiki/First_observation_of_gravitational_waves'},
+  {id:'i6', title:'First website goes live', year:1991, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/History_of_the_World_Wide_Web'},
+  {id:'i7', title:'Android 1.0 released', year:2008, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Android_version_history'},
+  {id:'i8', title:'Apple iPad announced', year:2010, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/IPad_(1st_generation)'},
+  {id:'i9', title:'Intel 8080 microprocessor', year:1974, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Intel_8080'},
 
-    // INVENTIONS / TECH (close gaps)
-    {id:'i6', title:'First website goes live', year:1991, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/History_of_the_World_Wide_Web'},
-    {id:'i7', title:'Android 1.0 released', year:2008, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Android_version_history'},
-    {id:'i8', title:'Apple iPad announced', year:2010, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/IPad_(1st_generation)'},
-    {id:'i9', title:'Intel 8080 microprocessor', year:1974, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Intel_8080'},
+  {id:'b6', title:'Niels Bohr born', year:1885, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Niels_Bohr'},
+  {id:'b7', title:'Nikola Tesla born', year:1856, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Nikola_Tesla'},
+  {id:'b8', title:'Katherine Johnson born', year:1918, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Katherine_Johnson'},
 
-    // BIRTHDAYS (close gaps)
-    {id:'b6', title:'Niels Bohr born', year:1885, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Niels_Bohr'},
-    {id:'b7', title:'Nikola Tesla born', year:1856, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Nikola_Tesla'},
-    {id:'b8', title:'Katherine Johnson born', year:1918, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Katherine_Johnson'},
+  {id:'m1', title:'Sgt. Pepper\'s released', year:1967, category:'Music', wiki:'https://en.wikipedia.org/wiki/Sgt._Pepper%27s_Lonely_Hearts_Club_Band'},
+  {id:'m2', title:'Thriller released', year:1982, category:'Music', wiki:'https://en.wikipedia.org/wiki/Thriller_(Michael_Jackson_album)'},
+  {id:'m3', title:'Nevermind released', year:1991, category:'Music', wiki:'https://en.wikipedia.org/wiki/Nevermind'},
+  {id:'m4', title:'Lemonade released', year:2016, category:'Music', wiki:'https://en.wikipedia.org/wiki/Lemonade_(Beyonc%C3%A9_album)'},
+  {id:'m5', title:'1989 released', year:2014, category:'Music', wiki:'https://en.wikipedia.org/wiki/1989_(Taylor_Swift_album)'},
+  {id:'m6', title:'Purple Rain released', year:1984, category:'Music', wiki:'https://en.wikipedia.org/wiki/Purple_Rain_(album)'},
+  {id:'m7', title:'Revolver released', year:1966, category:'Music', wiki:'https://en.wikipedia.org/wiki/Revolver_(Beatles_album)'},
+  {id:'m8', title:'Abbey Road released', year:1969, category:'Music', wiki:'https://en.wikipedia.org/wiki/Abbey_Road'}
+];
 
-    // MUSIC (close gaps)
-    {id:'m6', title:'Prince releases Purple Rain', year:1984, category:'Music', wiki:'https://en.wikipedia.org/wiki/Purple_Rain_(album)'},
-    {id:'m7', title:'The Beatles release Revolver', year:1966, category:'Music', wiki:'https://en.wikipedia.org/wiki/Revolver_(Beatles_album)'},
-    {id:'m8', title:'The Beatles release Abbey Road', year:1969, category:'Music', wiki:'https://en.wikipedia.org/wiki/Abbey_Road'}
+let ALL_CATEGORIES = Array.from(new Set(seedData.map(e=>e.category))).sort();
 
-  
-  ];
-  let ALL_CATEGORIES = Array.from(new Set(seedData.map(e=>e.category))).sort();
+/* ===== External data config ===== */
+/* List specific extra files to load when hosted (http/https). */
+const EXTRA_FILES = [
+  'space.ndjson' // add more here: 'history.ndjson','science.ndjson', etc.
+];
 
-  let pool = [];
-  let usedPairs = new Set();
-  let score = 0, streak = 0, remaining = 0, index = 0;
-  let difficulty = 'normal';
-  let selection = new Set(ALL_CATEGORIES);
+/* Backward compatibility single-bundle names (first match wins). */
+const LEGACY_BUNDLES = ['events_full.ndjson','events_full.json','events_full.txt'];
 
-  const card = $('#card');
-  const resultTag = $('#result');
-  const titleA = $('#titleA'), titleB = $('#titleB');
-  const srcA = $('#srcA'), srcB = $('#srcB');
-  const catA = $('#catA'), catB = $('#catB');
-  const idx = $('#idx');
-  const chipScore = $('#chipScore'), chipStreak = $('#chipStreak'), chipRemaining = $('#chipRemaining');
-  const selDifficulty = $('#selDifficulty');
-  const settings = $('#settings');
-  const btnFirst = $('#btnFirst');
-  const btnNew = $('#btnNew');
-  const progress = $('#progress');
-  const toast = $('#toast');
-  const catChecks = $('#catChecks');
+/* ===== Game state ===== */
+let pool = [];
+let usedPairs = new Set();
+let score = 0, streak = 0, remaining = 0, indexNum = 0;
+let difficulty = 'normal';
+let selection = new Set(ALL_CATEGORIES);
 
-  function linkify(ev){ return ev.wiki ? `<a href="${ev.wiki}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.title)}</a>` : escapeHtml(ev.title); }
-  function escapeHtml(s){ return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
-  function formatDate(ev){ const y = ev.year; return (y<0? `${-y} BCE` : y); }
+/* ===== Elements ===== */
+const card = $('#card');
+const resultTag = $('#result');
+const titleA = $('#titleA'), titleB = $('#titleB');
+const srcA = $('#srcA'), srcB = $('#srcB');
+const catA = $('#catA'), catB = $('#catB');
+const chipScore = $('#chipScore'), chipStreak = $('#chipStreak'), chipRemaining = $('#chipRemaining');
+const selDifficulty = $('#selDifficulty');
+const settings = $('#settings');
+const btnNew = $('#btnNew');
+const toast = $('#toast');
+const catChecks = $('#catChecks');
 
-  function difficultyWindow(){
-    switch(difficulty){
-      case 'easy': return 400;
-      case 'normal': return 120;
-      case 'hard': return 40;
-      case 'expert': return 12;
-    }
+/* ===== Helpers ===== */
+function linkify(ev){ return ev.wiki ? `<a href="${ev.wiki}" target="_blank" rel="noopener noreferrer">${escapeHtml(ev.title)}</a>` : escapeHtml(ev.title); }
+function formatDate(ev){ const y = ev.year; return (y<0? `${-y} BCE` : y); }
+
+function difficultyWindow(){
+  switch(difficulty){
+    case 'easy': return 400;
+    case 'normal': return 120;
+    case 'hard': return 40;
+    case 'expert': return 12;
+    default: return 120;
   }
+}
 
-  function renderCategoryChecks(){
-    catChecks.innerHTML = '';
-    ALL_CATEGORIES.forEach(c=>{
-      const id = 'cat_' + c.replace(/\W+/g,'_');
-      const row = document.createElement('label');
-      const cb = document.createElement('input');
-      cb.type = 'checkbox'; cb.id = id; cb.value = c; cb.checked = true;
-      cb.addEventListener('change', ()=>{ applySelections(); newGame(false); });
-      const span = document.createElement('span');
-      span.textContent = c;
-      row.appendChild(cb); row.appendChild(span);
-      catChecks.appendChild(row);
-    });
+function renderCategoryChecks(){
+  catChecks.innerHTML = '';
+  ALL_CATEGORIES.forEach(c=>{
+    const id = 'cat_' + c.replace(/\\W+/g,'_');
+    const row = document.createElement('label');
+    const cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.id = id; cb.value = c; cb.checked = true;
+    cb.addEventListener('change', ()=>{ applySelections(); newGame(false); });
+    const span = document.createElement('span');
+    span.textContent = c;
+    row.appendChild(cb); row.appendChild(span);
+    catChecks.appendChild(row);
+  });
+}
+
+function getCheckedCategories(){
+  return Array.from(catChecks.querySelectorAll('input[type=checkbox]'))
+    .filter(cb=>cb.checked).map(cb=>cb.value);
+}
+
+function applySelections(){
+  const chosen = getCheckedCategories();
+  selection = new Set(chosen);
+  if (selection.size === 0){
+    // re-check all to avoid empty state
+    catChecks.querySelectorAll('input[type=checkbox]').forEach(cb=> cb.checked = true);
+    selection = new Set(ALL_CATEGORIES);
+    showToast('All categories re-selected');
   }
+}
 
-  function getCheckedCategories(){
-    return Array.from(catChecks.querySelectorAll('input[type=checkbox]'))
-      .filter(cb=>cb.checked).map(cb=>cb.value);
+function buildPool(){
+  const filtered = seedData.filter(e=>selection.has(e.category));
+  return filtered.sort(()=>Math.random()-.5);
+}
+
+function pickPair(){
+  const windowY = difficultyWindow();
+  const selectedCats = Array.from(selection);
+  if (selectedCats.length === 0) return null;
+
+  // Prefer pairs within the difficulty window
+  for (let attempts=0; attempts<600; attempts++){
+    const cat = selectedCats[Math.floor(Math.random()*selectedCats.length)];
+    const catEvents = pool.filter(e=>e.category===cat);
+    if (catEvents.length < 2) continue;
+    const A = catEvents[Math.floor(Math.random()*catEvents.length)];
+    const B = catEvents[Math.floor(Math.random()*catEvents.length)];
+    if (!A || !B || A.id===B.id) continue;
+    const key = A.id+'|'+B.id;
+    if (usedPairs.has(key)) continue;
+    const gap = Math.abs(A.year - B.year);
+    if (gap === 0 || gap > windowY) continue;
+    usedPairs.add(key);
+    return [A,B];
   }
-
-  function applySelections(){
-    const chosen = getCheckedCategories();
-    selection = new Set(chosen);
-    if (selection.size === 0){
-      // re-check all to avoid empty state
-      catChecks.querySelectorAll('input[type=checkbox]').forEach(cb=> cb.checked = true);
-      selection = new Set(ALL_CATEGORIES);
-      showToast('All categories re-selected');
-    }
+  // Fallback: any pair in same category
+  for (let attempts=0; attempts<800; attempts++){
+    const cat = selectedCats[Math.floor(Math.random()*selectedCats.length)];
+    const catEvents = pool.filter(e=>e.category===cat);
+    if (catEvents.length < 2) continue;
+    const A = catEvents[Math.floor(Math.random()*catEvents.length)];
+    const B = catEvents[Math.floor(Math.random()*catEvents.length)];
+    if (!A || !B || A.id===B.id) continue;
+    const key = A.id+'|'+B.id;
+    if (usedPairs.has(key)) continue;
+    usedPairs.add(key);
+    return [A,B];
   }
+  return null;
+}
 
-  function buildPool(){
-    const filtered = seedData.filter(e=>selection.has(e.category));
-    // shuffle shallowly
-    return filtered.sort(()=>Math.random()-.5);
+let currentA=null, currentB=null;
+function renderPair(A,B){
+  currentA = A; currentB = B;
+  titleA.textContent = A.title;
+  titleB.textContent = B.title;
+  srcA.textContent = '';
+  srcB.textContent = '';
+  catA.textContent = A.category;
+  catB.textContent = B.category;
+  indexNum++;
+}
+
+function updateChips(){
+  chipScore.textContent = `Score: ${score}`;
+  chipStreak.textContent = `Streak: ${streak}`;
+  const approxPairs = Math.max(0, pool.length - usedPairs.size);
+  chipRemaining.textContent = `${approxPairs} left`;
+}
+
+function nextRound(){
+  const pair = pickPair();
+  if (!pair){
+    document.getElementById('lastResult').innerHTML = '<div class="tiny">No more pairs. Tap New game or change categories.</div>';
+    return;
   }
+  renderPair(pair[0], pair[1]);
+  updateChips();
+}
 
-  function pickPair(){
-    const windowY = difficultyWindow();
-    const selectedCats = Array.from(selection);
-    if (selectedCats.length === 0) return null;
-
-    // Prefer pairs within the difficulty window
-    for (let attempts=0; attempts<600; attempts++){
-      const cat = selectedCats[Math.floor(Math.random()*selectedCats.length)];
-      const catEvents = pool.filter(e=>e.category===cat);
-      if (catEvents.length < 2) continue;
-      const A = catEvents[Math.floor(Math.random()*catEvents.length)];
-      const B = catEvents[Math.floor(Math.random()*catEvents.length)];
-      if (!A || !B || A.id===B.id) continue;
-      const key = A.id+'|'+B.id;
-      if (usedPairs.has(key)) continue;
-      const gap = Math.abs(A.year - B.year);
-      if (gap === 0 || gap > windowY) continue;
-      usedPairs.add(key);
-      return [A,B];
-    }
-    // Fallback: any pair in same category
-    for (let attempts=0; attempts<800; attempts++){
-      const cat = selectedCats[Math.floor(Math.random()*selectedCats.length)];
-      const catEvents = pool.filter(e=>e.category===cat);
-      if (catEvents.length < 2) continue;
-      const A = catEvents[Math.floor(Math.random()*catEvents.length)];
-      const B = catEvents[Math.floor(Math.random()*catEvents.length)];
-      if (!A || !B || A.id===B.id) continue;
-      const key = A.id+'|'+B.id;
-      if (usedPairs.has(key)) continue;
-      usedPairs.add(key);
-      return [A,B];
-    }
-    return null;
-  }
-
-  let currentA=null, currentB=null;
-  function renderPair(A,B){
-    currentA = A; currentB = B;
-    titleA.textContent = A.title;
-    titleB.textContent = B.title;
-    srcA.textContent = '';
-    srcB.textContent = '';
-    catA.textContent = A.category;
-    catB.textContent = B.category;
-    index++; idx.textContent = `#${index}`;
-  }
-
-  function updateChips(){
-    chipScore.textContent = `Score: ${score}`;
-    chipStreak.textContent = `Streak: ${streak}`;
-    const approxPairs = Math.max(0, pool.length - usedPairs.size);
-    chipRemaining.textContent = `${approxPairs} left`;
-  }
-
-  function nextRound(){
-    const pair = pickPair();
-    if (!pair){
-      idx.textContent = 'No more pairs. Tap New game or change categories.';
-      return;
-    }
-    renderPair(pair[0], pair[1]);
-    updateChips();
-  }
-
-  function showResult(ok){
+function showResult(ok){
   const a = currentA, b = currentB;
-  // tiny pill at top (kept behavior)
   resultTag.textContent = ok ? 'CORRECT' : 'WRONG';
   resultTag.classList.toggle('bad', !ok);
   resultTag.style.display = 'inline-block';
   setTimeout(()=> resultTag.style.display='none', 700);
 
-  // Format month + year if available, else year
   function formatFullDate(ev){
     if (!ev) return '';
     const parts = [];
@@ -367,134 +377,147 @@
   }
 }
 
-  function judge(aAfter){
+function judge(aAfter){
   const a = currentA, b = currentB;
   if (!a || !b) return;
   const realAAfter = (a.year > b.year); // true if A after B
   const ok = (aAfter === realAAfter);
   score += ok ? 1 : 0;
-  // streak = consecutive correct answers
   streak = ok ? (streak + 1) : 0;
   showResult(ok);
   updateChips();
   nextRound();
 }
 
-  // Gestures & keys
-  let startX=0, startY=0, dragging=false;
-  card.addEventListener('touchstart', e=>{ const t=e.touches[0]; startX=t.clientX; startY=t.clientY; dragging=true; }, {passive:true});
-  card.addEventListener('touchmove', e=>{
-    if(!dragging) return;
-    const t=e.touches[0]; const dx=t.clientX-startX; const dy=t.clientY-startY;
-    card.style.transform = `translate(${dx}px, ${dy*.1}px) rotate(${dx*.05}deg)`;
-    card.style.opacity = String(clamp(1 - Math.abs(dx)/260, 0.45, 1));
-  }, {passive:true});
-  function endGesture(dx){
-    dragging=false;
-    card.style.transition = 'transform .15s ease, opacity .15s ease';
-    card.style.transform = ''; card.style.opacity = '1';
-    setTimeout(()=> card.style.transition='', 180);
-    if (Math.abs(dx) > 60) judge(dx>0);
+/* ===== Gestures & keys ===== */
+let startX=0, startY=0, dragging=false;
+card.addEventListener('touchstart', e=>{ const t=e.touches[0]; startX=t.clientX; startY=t.clientY; dragging=true; }, {passive:true});
+card.addEventListener('touchmove', e=>{
+  if(!dragging) return;
+  const t=e.touches[0]; const dx=t.clientX-startX; const dy=t.clientY-startY;
+  card.style.transform = `translate(${dx}px, ${dy*.1}px) rotate(${dx*.05}deg)`;
+  card.style.opacity = String(clamp(1 - Math.abs(dx)/260, 0.45, 1));
+}, {passive:true});
+function endGesture(dx){
+  dragging=false;
+  card.style.transition = 'transform .15s ease, opacity .15s ease';
+  card.style.transform = ''; card.style.opacity = '1';
+  setTimeout(()=> card.style.transition='', 180);
+  if (Math.abs(dx) > 60) judge(dx>0);
+}
+card.addEventListener('touchend', e=>{ const dx = (e.changedTouches[0].clientX - startX); endGesture(dx); });
+card.addEventListener('mousedown', e=>{ startX=e.clientX; startY=e.clientY; dragging=true; });
+window.addEventListener('mousemove', e=>{
+  if(!dragging) return;
+  const dx=e.clientX-startX; const dy=e.clientY-startY;
+  card.style.transform = `translate(${dx}px, ${dy*.1}px) rotate(${dx*.05}deg)`;
+  card.style.opacity = String(clamp(1 - Math.abs(dx)/260, 0.45, 1));
+});
+window.addEventListener('mouseup', e=>{ if(!dragging) return; const dx=e.clientX-startX; endGesture(dx); });
+window.addEventListener('keydown', e=>{ if (e.key==='ArrowLeft') judge(false); else if (e.key==='ArrowRight') judge(true); });
+
+/* ===== Controls ===== */
+const btnSettings = document.getElementById('btnSettings');
+btnSettings.addEventListener('click', ()=>{
+  settings.style.display = (settings.style.display==='none' || settings.style.display==='') ? 'block' : 'none';
+});
+btnNew.addEventListener('click', ()=> newGame());
+
+selDifficulty.addEventListener('change', ()=>{ difficulty = selDifficulty.value; newGame(false); });
+
+function newGame(showToastMsg=true){
+  score = 0; streak = 0; indexNum = 0; usedPairs = new Set();
+  applySelections();
+  pool = buildPool();
+  updateChips();
+  nextRound();
+  if (showToastMsg) showToast('New game ready');
+}
+
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(()=> toast.classList.remove('show'), 1400);
+}
+
+/* ===== Background loading (server only) ===== */
+async function tryFetch(url){
+  try{
+    const res = await fetch(url, {cache:'no-store'});
+    if (!res.ok) return null;
+    return await res.text();
+  }catch{ return null; }
+}
+function normalizeOne(o){
+  if (!o) return null;
+  const id = o.id || o.title?.toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,50);
+  const title = o.title || o.event || '';
+  const category = o.category || 'Misc';
+  let year = o.year;
+  if (year==null && o.date) {
+    const m = String(o.date).match(/(-?\\d{1,6})/);
+    if (m) year = parseInt(m[1],10);
   }
-  card.addEventListener('touchend', e=>{ const dx = (e.changedTouches[0].clientX - startX); endGesture(dx); });
-  card.addEventListener('mousedown', e=>{ startX=e.clientX; startY=e.clientY; dragging=true; });
-  window.addEventListener('mousemove', e=>{
-    if(!dragging) return;
-    const dx=e.clientX-startX; const dy=e.clientY-startY;
-    card.style.transform = `translate(${dx}px, ${dy*.1}px) rotate(${dx*.05}deg)`;
-    card.style.opacity = String(clamp(1 - Math.abs(dx)/260, 0.45, 1));
-  });
-  window.addEventListener('mouseup', e=>{ if(!dragging) return; const dx=e.clientX-startX; endGesture(dx); });
-  window.addEventListener('keydown', e=>{ if (e.key==='ArrowLeft') judge(false); else if (e.key==='ArrowRight') judge(true); });
+  if (year==null) return null;
+  return { id, title, year: parseInt(year,10), category, wiki: o.wiki || o.link || o.url || '' };
+}
+function normalizeArray(arr){ return arr.map(normalizeOne).filter(Boolean); }
 
-  // Controls
-  const btnSettings = document.getElementById('btnSettings');
-  btnSettings.addEventListener('click', ()=>{
-    settings.style.display = (settings.style.display==='none' || settings.style.display==='') ? 'block' : 'none';
-  });
-  btnNew.addEventListener('click', ()=> newGame());
+async function loadBundleFile(file){
+  const text = await tryFetch(file);
+  if (!text) return 0;
+  let extra = [];
+  try{
+    if (text.trim().startsWith('[')){
+      extra = normalizeArray(JSON.parse(text));
+    } else {
+      const lines = text.split(/\\r?\\n/).filter(Boolean);
+      for (let i=0;i<lines.length;i++){
+        try { extra.push(normalizeOne(JSON.parse(lines[i]))); } catch {}
+        if (i%200===0) await sleep(0);
+      }
+    }
+  } catch { extra = []; }
+  if (!extra.length) return 0;
 
-  selDifficulty.addEventListener('change', ()=>{ difficulty = selDifficulty.value; newGame(false); });
-
-  function newGame(showToastMsg=true){
-    score = 0; streak = 0; index = 0; usedPairs = new Set();
+  const existing = new Set(seedData.map(e=>e.id));
+  let added = 0;
+  extra.forEach(ev=>{ if (!existing.has(ev.id)) { seedData.push(ev); existing.add(ev.id); added++; } });
+  if (added>0){
+    ALL_CATEGORIES = Array.from(new Set(seedData.map(e=>e.category))).sort();
+    renderCategoryChecks();
     applySelections();
     pool = buildPool();
-    updateChips();
-    nextRound();
-    if (showToastMsg) showToast('New game ready');
   }
+  return added;
+}
 
-  function showToast(msg){
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(()=> toast.classList.remove('show'), 1400);
+async function backgroundLoad(){
+  // Try legacy bundle names first (first successful one stops here)
+  for (const file of LEGACY_BUNDLES){
+    const added = await loadBundleFile(file);
+    if (added>0){ showToast(`Loaded ${added} extra events from ${file}`); return; }
   }
+  // Otherwise, attempt each EXTRA_FILES entry
+  let totalAdded = 0;
+  for (const file of EXTRA_FILES){
+    const added = await loadBundleFile(file);
+    totalAdded += added;
+  }
+  if (totalAdded>0) showToast(`Loaded ${totalAdded} extra events`);
+}
 
-  // Optional background fetch when hosted on a server (ignored on local file:// for most browsers)
-  async function tryFetch(url){
-    try{
-      const res = await fetch(url, {cache:'no-store'});
-      if (!res.ok) return null;
-      return await res.text();
-    }catch{ return null; }
-  }
-  function normalizeOne(o){
-    if (!o) return null;
-    const id = o.id || o.title?.toLowerCase().replace(/[^a-z0-9]+/g,'-').slice(0,50);
-    const title = o.title || o.event || '';
-    const category = o.category || 'Misc';
-    let year = o.year;
-    if (year==null && o.date) {
-      const m = String(o.date).match(/(-?\d{1,6})/);
-      if (m) year = parseInt(m[1],10);
-    }
-    if (year==null) return null;
-    return { id, title, year: parseInt(year,10), category, wiki: o.wiki || o.link || o.url || '' };
-  }
-  function normalizeArray(arr){ return arr.map(normalizeOne).filter(Boolean); }
-
-  async function backgroundLoad(){
-    const candidates = ['events_full.ndjson','events_full.json','events_full.txt'];
-    for (const file of candidates){
-      const text = await tryFetch(file);
-      if (!text) continue;
-      let extra = [];
-      try{
-        if (text.trim().startsWith('[')){
-          extra = normalizeArray(JSON.parse(text));
-        } else {
-          const lines = text.split(/\\r?\\n/).filter(Boolean);
-          for (let i=0;i<lines.length;i++){
-            try { extra.push(normalizeOne(JSON.parse(lines[i]))); } catch {}
-            if (i%200===0) await sleep(0);
-          }
-        }
-      }catch{ extra = []; }
-      if (extra.length){
-        const ids = new Set(seedData.map(e=>e.id));
-        extra.forEach(ev=>{ if (!ids.has(ev.id)) seedData.push(ev); });
-        // update categories & checks
-        ALL_CATEGORIES = Array.from(new Set(seedData.map(e=>e.category))).sort();
-        renderCategoryChecks();
-        applySelections();
-        pool = buildPool();
-        showToast(`Loaded ${extra.length} extra events`);
-      }
-      break; // stop after first successful
-    }
-  }
-
-  (function boot(){
-    renderCategoryChecks();
-    // ensure all checked
-    catChecks.querySelectorAll('input[type=checkbox]').forEach(cb=> cb.checked = true);
-    selection = new Set(ALL_CATEGORIES);
-    difficulty = selDifficulty.value;
-    newGame(false);
-    // kick off background load (only works when served via http/https)
-    backgroundLoad();
-  })();
-  </script>
+/* ===== Boot ===== */
+(function boot(){
+  renderCategoryChecks();
+  // ensure all checked
+  catChecks.querySelectorAll('input[type=checkbox]').forEach(cb=> cb.checked = true);
+  selection = new Set(ALL_CATEGORIES);
+  difficulty = selDifficulty.value;
+  newGame(false);
+  // kick off background load (only works when served via http/https)
+  backgroundLoad();
+})();
+</script>
 </body>
 </html>
