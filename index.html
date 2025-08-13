@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>First Things First — v78</title>
+<title>First Things First — v79</title>
 <style>
   :root{
     --bg:#0b0f14;
@@ -76,15 +76,6 @@
   .dbgbox{white-space:pre-wrap;background:#0b131d;border:1px solid var(--border);border-radius:.6rem;margin-top:10px;padding:10px;font-size:.85rem;max-height:28vh;overflow:auto}
   .dbgchips{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:10px}
   .dbgchip{background:#0f172a;border:1px solid var(--border);border-radius:999px;padding:.25rem .6rem;font-size:.85rem}
-  /* Flag button */
-  .flagbtn{
-    display:inline-flex;align-items:center;gap:.35rem;
-    border:1px solid rgba(239,68,68,.5);
-    color:#fecaca;background:rgba(239,68,68,.1);
-    border-radius:.45rem;padding:.15rem .4rem;font-size:.78rem;
-    cursor:pointer;margin-left:.4rem;
-  }
-  .flagbtn:hover{filter:brightness(1.05)}
 </style>
 </head>
 <body>
@@ -92,7 +83,7 @@
   <div class="topwrap">
     <div class="logo-wrap" style="display:flex;align-items:center;gap:.5rem;">
       <div class="logo" id="btnFirst" title="First Things First">First Things First</div>
-      <span class="version">v78</span>
+      <span class="version">v79</span>
       <button id="btnSettings" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:#0f172a;border:1px solid var(--border);border-radius:.55rem;" title="Settings" type="button">⚙</button>
     </div>
     <div class="actions">
@@ -156,11 +147,9 @@
     <div class="dbgchips">
       <div class="dbgchip" id="dbgCats">Categories: (loading)</div>
       <div class="dbgchip" id="dbgCounts">Seed: 0 | Extra: 0</div>
-      <label class="dbgchip"><input type="checkbox" id="sendRemote"> send to webhook</label>
-      <button id="btnExport" class="btn-accent">Export reports JSON</button>
       <button id="btnReload" class="btn-accent">Reload extra files</button>
     </div>
-    <div class="tiny">Add filenames to <code>list.json</code> (["space.ndjson","physics.ndjson"]) to control which files are loaded. Optional: define <code>window.EXTRA_FILES</code> as a fallback.</div>
+    <div class="tiny">Add filenames to <code>list.json</code> (["space.ndjson","physics.ndjson"]) to control which files are loaded.</div>
     <div class="dbgbox" id="dbgLog"></div>
   </div>
 </section>
@@ -168,9 +157,6 @@
 <div class="toast" id="toast">Loaded extra data</div>
 
 <script>
-/* ===== Config for reporting (unchanged) ===== */
-const FEEDBACK_ENDPOINT = "";
-
 /* ===== Utilities ===== */
 const $ = sel => document.querySelector(sel);
 const sleep = ms => new Promise(r=>setTimeout(r, ms));
@@ -191,7 +177,7 @@ const DBG = {
   countsEl: null,
   log(){ 
     const msg = Array.from(arguments).map(x=> typeof x==='string'? x : JSON.stringify(x)).join(' ');
-    console.log('[v78]', msg);
+    console.log('[v79]', msg);
     if (DBG.enabled && DBG.logEl) { DBG.logEl.textContent += msg + "\\n"; }
   },
   setCats(txt){ if (DBG.enabled && DBG.catsEl) DBG.catsEl.textContent = txt; },
@@ -204,10 +190,9 @@ if (DBG.enabled){
   DBG.catsEl = $('#dbgCats');
   DBG.countsEl = $('#dbgCounts');
   $('#btnReload').addEventListener('click', ()=> initAndLoad(true));
-  $('#btnExport').addEventListener('click', exportReports);
 }
 
-/* ===== Seed data (same as v77) ===== */
+/* ===== Seed data (unchanged) ===== */
 const seedData = [
   {id:'h1', title:'Fall of the Berlin Wall', year:1989, category:'History', wiki:'https://en.wikipedia.org/wiki/Berlin_Wall'},
   {id:'h2', title:'U.S. Declaration of Independence', year:1776, category:'History', wiki:'https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence'},
@@ -275,7 +260,7 @@ let difficulty = 'normal';
 let selection = new Set(ALL_CATEGORIES);
 
 /* ===== Elements ===== */
-const card = $('#card');              /* keep single declaration */
+const card = $('#card');
 const resultTag = $('#result');
 const titleA = $('#titleA'), titleB = $('#titleB');
 const srcA = $('#srcA'), srcB = $('#srcB');
@@ -388,68 +373,19 @@ function updateChips(){
   chipRemaining.textContent = `${approxPairs} left`;
 }
 
-/* ===== Reporting (unchanged) ===== */
-const REPORT_KEY = 'ftf_reports';
-function getReports(){ try{ return JSON.parse(localStorage.getItem(REPORT_KEY)||'[]'); }catch{ return []; } }
-function saveReports(arr){ localStorage.setItem(REPORT_KEY, JSON.stringify(arr)); }
-
-async function sendReportToWebhook(payload){
-  if (!FEEDBACK_ENDPOINT || !$('#sendRemote')?.checked) return {sent:false};
-  try{
-    const res = await fetch(FEEDBACK_ENDPOINT, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(payload)
-    });
-    return {sent:true, ok: res.ok, status: res.status};
-  }catch(e){
-    return {sent:true, ok:false, error:String(e)};
-  }
-}
-
-async function flagEvent(ev, slot){
-  const payload = {
-    when: new Date().toISOString(),
-    slot,
-    event: ev,
-    pair: {A: currentA?.id || null, B: currentB?.id || null},
-    ua: navigator.userAgent,
-    url: location.href
-  };
-  const existing = getReports(); existing.push(payload); saveReports(existing);
-  DBG.log('Flagged', payload);
-  const res = await sendReportToWebhook(payload);
-  if (res.sent){
-    DBG.log('Webhook status', JSON.stringify(res));
-  }
-  showToast('Thanks — flagged for review.');
-}
-
-function exportReports(){
-  const data = getReports();
-  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `ftf_reports_${new Date().toISOString().slice(0,10)}.json`;
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(()=> URL.revokeObjectURL(a.href), 1000);
-  a.remove();
-}
-
 /* ===== Loader (reads list.json) ===== */
 async function tryFetch(url){
   try{
-    console.log('[v78] Fetching', url);
+    console.log('[v79] Fetching', url);
     const res = await fetch(url, {cache:'no-store'});
-    console.log('[v78] Status', res.status, 'for', url);
+    console.log('[v79] Status', res.status, 'for', url);
     if (!res.ok) return null;
     let txt = await res.text();
-    if (txt.charCodeAt(0) === 0xFEFF) { txt = txt.slice(1); console.log('[v78] Stripped BOM from', url); }
+    if (txt.charCodeAt(0) === 0xFEFF) { txt = txt.slice(1); console.log('[v79] Stripped BOM from', url); }
     txt = txt.replace(/^\uFEFF/, '');
-    console.log('[v78] Bytes', txt.length, 'from', url);
+    console.log('[v79] Bytes', txt.length, 'from', url);
     return txt;
-  }catch(e){ console.log('[v78] Fetch error', (e&&e.message)||e, 'for', url); return null; }
+  }catch(e){ console.log('[v79] Fetch error', (e&&e.message)||e, 'for', url); return null; }
 }
 function normalizeOne(o){
   if (!o) return null;
@@ -468,7 +404,7 @@ function normalizeArray(arr){ return arr.map(normalizeOne).filter(Boolean); }
 
 async function loadBundleFile(file){
   const text = await tryFetch(file);
-  if (!text){ console.log('[v78] No text from', file); return 0; }
+  if (!text){ console.log('[v79] No text from', file); return 0; }
   let extra = [];
   try{
     const trimmed = text.trimStart();
@@ -477,13 +413,13 @@ async function loadBundleFile(file){
     } else {
       const lines = text.split(/\r?\n/).filter(Boolean);
       for (let i=0;i<lines.length;i++){
-        try { extra.push(normalizeOne(JSON.parse(lines[i]))); } catch(e){ console.log('[v78] Bad line', i+1, 'in', file); }
+        try { extra.push(normalizeOne(JSON.parse(lines[i]))); } catch(e){ console.log('[v79] Bad line', i+1, 'in', file); }
         if (i%200===0) await sleep(0);
       }
     }
-  } catch (e){ console.log('[v78] Parse error for', file, (e&&e.message)||e); extra = []; }
-  console.log('[v78] Parsed', extra.length, 'events from', file);
-  if (!extra.length){ console.log('[v78] Nothing added from', file); return 0; }
+  } catch (e){ console.log('[v79] Parse error for', file, (e&&e.message)||e); extra = []; }
+  console.log('[v79] Parsed', extra.length, 'events from', file);
+  if (!extra.length){ console.log('[v79] Nothing added from', file); return 0; }
 
   const existing = new Set(seedData.map(e=>e.id));
   let added = 0;
@@ -494,7 +430,7 @@ async function loadBundleFile(file){
     applySelections();
     pool = buildPool();
   }
-  console.log(`[v78] Successfully loaded ${added} event(s) from ${file}`);
+  console.log(`[v79] Successfully loaded ${added} event(s) from ${file}`);
   if (DBG.enabled){ DBG.setCats('Categories: ' + ALL_CATEGORIES.join(', ')); DBG.setCounts(`Seed: ${seedData.length - added} | Extra: ${added}`); }
   return added;
 }
@@ -502,20 +438,20 @@ async function loadBundleFile(file){
 async function readListJson(){
   const txt = await tryFetch("list.json");
   if (!txt){ 
-    console.log('[v78] list.json missing — falling back to window.EXTRA_FILES or []');
-    return Array.isArray(window.EXTRA_FILES) ? window.EXTRA_FILES : [];
+    console.log('[v79] list.json missing — no external files will be loaded');
+    return [];
   }
   try{
     const arr = JSON.parse(txt);
     if (Array.isArray(arr) && arr.every(x => typeof x === 'string')){
-      console.log('[v78] list.json contents:', arr);
+      console.log('[v79] list.json contents:', arr);
       return arr;
     }
-    console.log('[v78] list.json not an array of strings — falling back');
-    return Array.isArray(window.EXTRA_FILES) ? window.EXTRA_FILES : [];
+    console.log('[v79] list.json not an array of strings — ignoring');
+    return [];
   }catch(e){
-    console.log('[v78] list.json parse error — falling back', e?.message || e);
-    return Array.isArray(window.EXTRA_FILES) ? window.EXTRA_FILES : [];
+    console.log('[v79] list.json parse error — ignoring', e?.message || e);
+    return [];
   }
 }
 
@@ -531,7 +467,7 @@ async function initAndLoad(forceToast){
     }
   }
   if (totalAdded>0 && !forceToast) showToast(`Loaded ${totalAdded} extra events`);
-  console.log('[v78] Done loading files via list.json, total added =', totalAdded);
+  console.log('[v79] Done loading files via list.json, total added =', totalAdded);
 }
 
 /* ===== Gameplay ===== */
@@ -569,11 +505,9 @@ function showResult(ok){
     const msg = `<div style="border:1px solid var(--border);background:#0b131d;border-radius:.65rem;padding:.5rem;font-size:.9rem;">
       <strong style="color:${ok ? 'var(--good)' : 'var(--bad)'};">${ok ? 'Correct!' : 'Wrong'}</strong><br>
       <a href="${wikiHref(a)}" target="_blank" rel="noopener noreferrer">${escapeHtml(a.title)}</a>
-      <button class="flagbtn" onclick="flagEvent(currentA,'A')" title="Report this entry">🚩 Report</button>
       <span style="color:var(--muted);">(${formatFullDate(a)})</span><br>
       <span style="display:block;text-align:center;margin:.25rem 0 .35rem 0;">${relation}</span>
       <a href="${wikiHref(b)}" target="_blank" rel="noopener noreferrer">${escapeHtml(b.title)}</a>
-      <button class="flagbtn" onclick="flagEvent(currentB,'B')" title="Report this entry">🚩 Report</button>
       <span style="color:var(--muted);">(${formatFullDate(b)})</span><br>
       <span style="color:var(--muted);">${gap} year${gap===1?'':'s'} apart</span>
     </div>`;
