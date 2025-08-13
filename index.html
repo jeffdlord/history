@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>First Things First — v77</title>
+<title>First Things First — v78</title>
 <style>
   :root{
     --bg:#0b0f14;
@@ -92,7 +92,7 @@
   <div class="topwrap">
     <div class="logo-wrap" style="display:flex;align-items:center;gap:.5rem;">
       <div class="logo" id="btnFirst" title="First Things First">First Things First</div>
-      <span class="version">v77</span>
+      <span class="version">v78</span>
       <button id="btnSettings" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:#0f172a;border:1px solid var(--border);border-radius:.55rem;" title="Settings" type="button">⚙</button>
     </div>
     <div class="actions">
@@ -191,7 +191,7 @@ const DBG = {
   countsEl: null,
   log(){ 
     const msg = Array.from(arguments).map(x=> typeof x==='string'? x : JSON.stringify(x)).join(' ');
-    console.log('[v77]', msg);
+    console.log('[v78]', msg);
     if (DBG.enabled && DBG.logEl) { DBG.logEl.textContent += msg + "\\n"; }
   },
   setCats(txt){ if (DBG.enabled && DBG.catsEl) DBG.catsEl.textContent = txt; },
@@ -207,7 +207,7 @@ if (DBG.enabled){
   $('#btnExport').addEventListener('click', exportReports);
 }
 
-/* ===== Seed data (same as v76) ===== */
+/* ===== Seed data (same as v77) ===== */
 const seedData = [
   {id:'h1', title:'Fall of the Berlin Wall', year:1989, category:'History', wiki:'https://en.wikipedia.org/wiki/Berlin_Wall'},
   {id:'h2', title:'U.S. Declaration of Independence', year:1776, category:'History', wiki:'https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence'},
@@ -265,7 +265,7 @@ const seedData = [
 let ALL_CATEGORIES = Array.from(new Set(seedData.map(e=>e.category))).sort();
 
 /* ===== External list loader ===== */
-const LIST_URL = "list.json"; // place this next to index.html
+const LIST_URL = "list.json";
 
 /* ===== Game state ===== */
 let pool = [];
@@ -275,7 +275,7 @@ let difficulty = 'normal';
 let selection = new Set(ALL_CATEGORIES);
 
 /* ===== Elements ===== */
-const card = $('#card');
+const card = $('#card');              /* keep single declaration */
 const resultTag = $('#result');
 const titleA = $('#titleA'), titleB = $('#titleB');
 const srcA = $('#srcA'), srcB = $('#srcB');
@@ -388,8 +388,6 @@ function updateChips(){
   chipRemaining.textContent = `${approxPairs} left`;
 }
 
-function ratioStr(ok){ return ok ? 'Correct!' : 'Wrong'; }
-
 /* ===== Reporting (unchanged) ===== */
 const REPORT_KEY = 'ftf_reports';
 function getReports(){ try{ return JSON.parse(localStorage.getItem(REPORT_KEY)||'[]'); }catch{ return []; } }
@@ -442,16 +440,16 @@ function exportReports(){
 /* ===== Loader (reads list.json) ===== */
 async function tryFetch(url){
   try{
-    console.log('[v77] Fetching', url);
+    console.log('[v78] Fetching', url);
     const res = await fetch(url, {cache:'no-store'});
-    console.log('[v77] Status', res.status, 'for', url);
+    console.log('[v78] Status', res.status, 'for', url);
     if (!res.ok) return null;
     let txt = await res.text();
-    if (txt.charCodeAt(0) === 0xFEFF) { txt = txt.slice(1); console.log('[v77] Stripped BOM from', url); }
+    if (txt.charCodeAt(0) === 0xFEFF) { txt = txt.slice(1); console.log('[v78] Stripped BOM from', url); }
     txt = txt.replace(/^\uFEFF/, '');
-    console.log('[v77] Bytes', txt.length, 'from', url);
+    console.log('[v78] Bytes', txt.length, 'from', url);
     return txt;
-  }catch(e){ console.log('[v77] Fetch error', (e&&e.message)||e, 'for', url); return null; }
+  }catch(e){ console.log('[v78] Fetch error', (e&&e.message)||e, 'for', url); return null; }
 }
 function normalizeOne(o){
   if (!o) return null;
@@ -470,7 +468,7 @@ function normalizeArray(arr){ return arr.map(normalizeOne).filter(Boolean); }
 
 async function loadBundleFile(file){
   const text = await tryFetch(file);
-  if (!text){ console.log('[v77] No text from', file); return 0; }
+  if (!text){ console.log('[v78] No text from', file); return 0; }
   let extra = [];
   try{
     const trimmed = text.trimStart();
@@ -479,13 +477,13 @@ async function loadBundleFile(file){
     } else {
       const lines = text.split(/\r?\n/).filter(Boolean);
       for (let i=0;i<lines.length;i++){
-        try { extra.push(normalizeOne(JSON.parse(lines[i]))); } catch(e){ console.log('[v77] Bad line', i+1, 'in', file); }
+        try { extra.push(normalizeOne(JSON.parse(lines[i]))); } catch(e){ console.log('[v78] Bad line', i+1, 'in', file); }
         if (i%200===0) await sleep(0);
       }
     }
-  } catch (e){ console.log('[v77] Parse error for', file, (e&&e.message)||e); extra = []; }
-  console.log('[v77] Parsed', extra.length, 'events from', file);
-  if (!extra.length){ console.log('[v77] Nothing added from', file); return 0; }
+  } catch (e){ console.log('[v78] Parse error for', file, (e&&e.message)||e); extra = []; }
+  console.log('[v78] Parsed', extra.length, 'events from', file);
+  if (!extra.length){ console.log('[v78] Nothing added from', file); return 0; }
 
   const existing = new Set(seedData.map(e=>e.id));
   let added = 0;
@@ -496,28 +494,27 @@ async function loadBundleFile(file){
     applySelections();
     pool = buildPool();
   }
-  console.log(`[v77] Successfully loaded ${added} event(s) from ${file}`);
+  console.log(`[v78] Successfully loaded ${added} event(s) from ${file}`);
   if (DBG.enabled){ DBG.setCats('Categories: ' + ALL_CATEGORIES.join(', ')); DBG.setCounts(`Seed: ${seedData.length - added} | Extra: ${added}`); }
   return added;
 }
 
 async function readListJson(){
-  // Prefer list.json. If missing or not an array of strings, fall back to window.EXTRA_FILES or [].
-  const txt = await tryFetch(LIST_URL);
+  const txt = await tryFetch("list.json");
   if (!txt){ 
-    console.log('[v77] list.json missing — falling back to window.EXTRA_FILES or []');
+    console.log('[v78] list.json missing — falling back to window.EXTRA_FILES or []');
     return Array.isArray(window.EXTRA_FILES) ? window.EXTRA_FILES : [];
   }
   try{
     const arr = JSON.parse(txt);
     if (Array.isArray(arr) && arr.every(x => typeof x === 'string')){
-      console.log('[v77] list.json contents:', arr);
+      console.log('[v78] list.json contents:', arr);
       return arr;
     }
-    console.log('[v77] list.json not an array of strings — falling back');
+    console.log('[v78] list.json not an array of strings — falling back');
     return Array.isArray(window.EXTRA_FILES) ? window.EXTRA_FILES : [];
   }catch(e){
-    console.log('[v77] list.json parse error — falling back', e?.message || e);
+    console.log('[v78] list.json parse error — falling back', e?.message || e);
     return Array.isArray(window.EXTRA_FILES) ? window.EXTRA_FILES : [];
   }
 }
@@ -534,7 +531,7 @@ async function initAndLoad(forceToast){
     }
   }
   if (totalAdded>0 && !forceToast) showToast(`Loaded ${totalAdded} extra events`);
-  console.log('[v77] Done loading files via list.json, total added =', totalAdded);
+  console.log('[v78] Done loading files via list.json, total added =', totalAdded);
 }
 
 /* ===== Gameplay ===== */
@@ -598,7 +595,6 @@ function judge(aAfter){
 
 /* Gestures & keys */
 let startX=0, startY=0, dragging=false;
-const card = document.getElementById('card');
 card.addEventListener('touchstart', e=>{ const t=e.touches[0]; startX=t.clientX; startY=t.clientY; dragging=true; }, {passive:true});
 card.addEventListener('touchmove', e=>{
   if(!dragging) return;
