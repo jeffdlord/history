@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>First Things First — v71</title>
+<title>First Things First — v72</title>
 <style>
   :root{
     --bg:#0b0f14;
@@ -83,7 +83,7 @@
   <div class="topwrap">
     <div class="logo-wrap" style="display:flex;align-items:center;gap:.5rem;">
       <div class="logo" id="btnFirst" title="First Things First">First Things First</div>
-      <span class="version">v71</span>
+      <span class="version">v72</span>
       <button id="btnSettings" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:#0f172a;border:1px solid var(--border);border-radius:.55rem;" title="Settings" type="button">⚙</button>
     </div>
     <div class="actions">
@@ -171,7 +171,7 @@ const DBG = {
   countsEl: null,
   log(){ 
     const msg = Array.from(arguments).map(x=> typeof x==='string'? x : JSON.stringify(x)).join(' ');
-    console.log('[v71]', msg);
+    console.log('[v72]', msg);
     if (DBG.enabled && DBG.logEl) { DBG.logEl.textContent += msg + "\\n"; }
   },
   setCats(txt){ if (DBG.enabled && DBG.catsEl) DBG.catsEl.textContent = txt; },
@@ -478,14 +478,18 @@ function showToast(msg){
   setTimeout(()=> toast.classList.remove('show'), 1400);
 }
 
-/* ===== Background loading (server only) with debug logs ===== */
+/* ===== Background loading (server only) with BOM stripping ===== */
 async function tryFetch(url){
   try{
     DBG.log('Fetching', url);
     const res = await fetch(url, {cache:'no-store'});
     DBG.log('Status', res.status, 'for', url);
     if (!res.ok) return null;
-    const txt = await res.text();
+    let txt = await res.text();
+    // Strip UTF-8 BOM if present
+    if (txt.charCodeAt(0) === 0xFEFF) { txt = txt.slice(1); DBG.log('Stripped BOM from', url); }
+    // Also handle BOM via regex just in case
+    txt = txt.replace(/^\\uFEFF/, '');
     DBG.log('Bytes', txt.length, 'from', url);
     return txt;
   }catch(e){ DBG.log('Fetch error', (e&&e.message)||e, 'for', url); return null; }
@@ -510,9 +514,12 @@ async function loadBundleFile(file){
   if (!text){ DBG.log('No text from', file); return 0; }
   let extra = [];
   try{
-    if (text.trim().startsWith('[')){
-      extra = normalizeArray(JSON.parse(text));
+    // If it starts with [, parse as JSON array
+    const trimmed = text.trimStart();
+    if (trimmed.startsWith('[')){
+      extra = normalizeArray(JSON.parse(trimmed));
     } else {
+      // Else assume NDJSON (one object per line)
       const lines = text.split(/\\r?\\n/).filter(Boolean);
       for (let i=0;i<lines.length;i++){
         try { extra.push(normalizeOne(JSON.parse(lines[i]))); } catch(e){ DBG.log('Bad line', i+1, 'in', file); }
@@ -537,10 +544,12 @@ async function loadBundleFile(file){
   return added;
 }
 
+const EXTRA_FILES = ['space.ndjson']; // ensure defined after functions
+
 async function backgroundLoad(forceToast){
   DBG.log('Starting backgroundLoad');
   // Try legacy bundle names first (first successful one stops here)
-  for (const file of LEGACY_BUNDLES){
+  for (const file of ['events_full.ndjson','events_full.json','events_full.txt']){
     const added = await loadBundleFile(file);
     if (added>0){ showToast(`Loaded ${added} extra events from ${file}`); DBG.log('Loaded legacy', file, 'added', added); return; }
   }
