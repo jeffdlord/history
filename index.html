@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>First Things First — v79</title>
+<title>First Things First — v80</title>
 <style>
   :root{
     --bg:#0b0f14;
@@ -83,7 +83,7 @@
   <div class="topwrap">
     <div class="logo-wrap" style="display:flex;align-items:center;gap:.5rem;">
       <div class="logo" id="btnFirst" title="First Things First">First Things First</div>
-      <span class="version">v79</span>
+      <span class="version">v80</span>
       <button id="btnSettings" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:#0f172a;border:1px solid var(--border);border-radius:.55rem;" title="Settings" type="button">⚙</button>
     </div>
     <div class="actions">
@@ -149,7 +149,7 @@
       <div class="dbgchip" id="dbgCounts">Seed: 0 | Extra: 0</div>
       <button id="btnReload" class="btn-accent">Reload extra files</button>
     </div>
-    <div class="tiny">Add filenames to <code>list.json</code> (["space.ndjson","physics.ndjson"]) to control which files are loaded.</div>
+    <div class="tiny">Add filenames to <code>list.json</code> (["space.ndjson","physics.ndjson","people.ndjson"]) to control which files are loaded.</div>
     <div class="dbgbox" id="dbgLog"></div>
   </div>
 </section>
@@ -177,7 +177,7 @@ const DBG = {
   countsEl: null,
   log(){ 
     const msg = Array.from(arguments).map(x=> typeof x==='string'? x : JSON.stringify(x)).join(' ');
-    console.log('[v79]', msg);
+    console.log('[v80]', msg);
     if (DBG.enabled && DBG.logEl) { DBG.logEl.textContent += msg + "\\n"; }
   },
   setCats(txt){ if (DBG.enabled && DBG.catsEl) DBG.catsEl.textContent = txt; },
@@ -192,7 +192,7 @@ if (DBG.enabled){
   $('#btnReload').addEventListener('click', ()=> initAndLoad(true));
 }
 
-/* ===== Seed data (unchanged) ===== */
+/* ===== Seed data (Birthdays removed) ===== */
 const seedData = [
   {id:'h1', title:'Fall of the Berlin Wall', year:1989, category:'History', wiki:'https://en.wikipedia.org/wiki/Berlin_Wall'},
   {id:'h2', title:'U.S. Declaration of Independence', year:1776, category:'History', wiki:'https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence'},
@@ -212,12 +212,6 @@ const seedData = [
   {id:'i4', title:'World Wide Web proposed', year:1989, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/World_Wide_Web'},
   {id:'i5', title:'First iPhone announced', year:2007, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/IPhone_(1st_generation)'},
 
-  {id:'b1', title:'Isaac Newton born', year:1643, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Isaac_Newton'},
-  {id:'b2', title:'Albert Einstein born', year:1879, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Albert_Einstein'},
-  {id:'b3', title:'Marie Curie born', year:1867, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Marie_Curie'},
-  {id:'b4', title:'Ada Lovelace born', year:1815, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Ada_Lovelace'},
-  {id:'b5', title:'Martin Luther King Jr. born', year:1929, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.'},
-
   {id:'h6', title:'German reunification', year:1990, category:'History', wiki:'https://en.wikipedia.org/wiki/German_reunification'},
   {id:'h7', title:'Dissolution of the Soviet Union', year:1991, category:'History', wiki:'https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union'},
   {id:'h8', title:'U.S. enters World War II', year:1941, category:'History', wiki:'https://en.wikipedia.org/wiki/United_States_in_World_War_II'},
@@ -232,10 +226,6 @@ const seedData = [
   {id:'i7', title:'Android 1.0 released', year:2008, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Android_version_history'},
   {id:'i8', title:'Apple iPad announced', year:2010, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/IPad_(1st_generation)'},
   {id:'i9', title:'Intel 8080 microprocessor', year:1974, category:'Inventions', wiki:'https://en.wikipedia.org/wiki/Intel_8080'},
-
-  {id:'b6', title:'Niels Bohr born', year:1885, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Niels_Bohr'},
-  {id:'b7', title:'Nikola Tesla born', year:1856, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Nikola_Tesla'},
-  {id:'b8', title:'Katherine Johnson born', year:1918, category:'Birthdays', wiki:'https://en.wikipedia.org/wiki/Katherine_Johnson'},
 
   {id:'m1', title:'Sgt. Pepper\'s released', year:1967, category:'Music', wiki:'https://en.wikipedia.org/wiki/Sgt._Pepper%27s_Lonely_Hearts_Club_Band'},
   {id:'m2', title:'Thriller released', year:1982, category:'Music', wiki:'https://en.wikipedia.org/wiki/Thriller_(Michael_Jackson_album)'},
@@ -376,16 +366,16 @@ function updateChips(){
 /* ===== Loader (reads list.json) ===== */
 async function tryFetch(url){
   try{
-    console.log('[v79] Fetching', url);
+    console.log('[v80] Fetching', url);
     const res = await fetch(url, {cache:'no-store'});
-    console.log('[v79] Status', res.status, 'for', url);
+    console.log('[v80] Status', res.status, 'for', url);
     if (!res.ok) return null;
     let txt = await res.text();
-    if (txt.charCodeAt(0) === 0xFEFF) { txt = txt.slice(1); console.log('[v79] Stripped BOM from', url); }
+    if (txt.charCodeAt(0) == 0xFEFF) { txt = txt.slice(1); console.log('[v80] Stripped BOM from', url); }
     txt = txt.replace(/^\uFEFF/, '');
-    console.log('[v79] Bytes', txt.length, 'from', url);
+    console.log('[v80] Bytes', txt.length, 'from', url);
     return txt;
-  }catch(e){ console.log('[v79] Fetch error', (e&&e.message)||e, 'for', url); return null; }
+  }catch(e){ console.log('[v80] Fetch error', (e&&e.message)||e, 'for', url); return null; }
 }
 function normalizeOne(o){
   if (!o) return null;
@@ -404,7 +394,7 @@ function normalizeArray(arr){ return arr.map(normalizeOne).filter(Boolean); }
 
 async function loadBundleFile(file){
   const text = await tryFetch(file);
-  if (!text){ console.log('[v79] No text from', file); return 0; }
+  if (!text){ console.log('[v80] No text from', file); return 0; }
   let extra = [];
   try{
     const trimmed = text.trimStart();
@@ -413,13 +403,13 @@ async function loadBundleFile(file){
     } else {
       const lines = text.split(/\r?\n/).filter(Boolean);
       for (let i=0;i<lines.length;i++){
-        try { extra.push(normalizeOne(JSON.parse(lines[i]))); } catch(e){ console.log('[v79] Bad line', i+1, 'in', file); }
+        try { extra.push(normalizeOne(JSON.parse(lines[i]))); } catch(e){ console.log('[v80] Bad line', i+1, 'in', file); }
         if (i%200===0) await sleep(0);
       }
     }
-  } catch (e){ console.log('[v79] Parse error for', file, (e&&e.message)||e); extra = []; }
-  console.log('[v79] Parsed', extra.length, 'events from', file);
-  if (!extra.length){ console.log('[v79] Nothing added from', file); return 0; }
+  } catch (e){ console.log('[v80] Parse error for', file, (e&&e.message)||e); extra = []; }
+  console.log('[v80] Parsed', extra.length, 'events from', file);
+  if (!extra.length){ console.log('[v80] Nothing added from', file); return 0; }
 
   const existing = new Set(seedData.map(e=>e.id));
   let added = 0;
@@ -430,7 +420,7 @@ async function loadBundleFile(file){
     applySelections();
     pool = buildPool();
   }
-  console.log(`[v79] Successfully loaded ${added} event(s) from ${file}`);
+  console.log(`[v80] Successfully loaded ${added} event(s) from ${file}`);
   if (DBG.enabled){ DBG.setCats('Categories: ' + ALL_CATEGORIES.join(', ')); DBG.setCounts(`Seed: ${seedData.length - added} | Extra: ${added}`); }
   return added;
 }
@@ -438,19 +428,19 @@ async function loadBundleFile(file){
 async function readListJson(){
   const txt = await tryFetch("list.json");
   if (!txt){ 
-    console.log('[v79] list.json missing — no external files will be loaded');
+    console.log('[v80] list.json missing — no external files will be loaded');
     return [];
   }
   try{
     const arr = JSON.parse(txt);
     if (Array.isArray(arr) && arr.every(x => typeof x === 'string')){
-      console.log('[v79] list.json contents:', arr);
+      console.log('[v80] list.json contents:', arr);
       return arr;
     }
-    console.log('[v79] list.json not an array of strings — ignoring');
+    console.log('[v80] list.json not an array of strings — ignoring');
     return [];
   }catch(e){
-    console.log('[v79] list.json parse error — ignoring', e?.message || e);
+    console.log('[v80] list.json parse error — ignoring', e?.message || e);
     return [];
   }
 }
@@ -467,7 +457,7 @@ async function initAndLoad(forceToast){
     }
   }
   if (totalAdded>0 && !forceToast) showToast(`Loaded ${totalAdded} extra events`);
-  console.log('[v79] Done loading files via list.json, total added =', totalAdded);
+  console.log('[v80] Done loading files via list.json, total added =', totalAdded);
 }
 
 /* ===== Gameplay ===== */
@@ -532,7 +522,7 @@ let startX=0, startY=0, dragging=false;
 card.addEventListener('touchstart', e=>{ const t=e.touches[0]; startX=t.clientX; startY=t.clientY; dragging=true; }, {passive:true});
 card.addEventListener('touchmove', e=>{
   if(!dragging) return;
-  const t=e.touches[0]; const dx=t.clientX-startX; const dy=t.clientY-startY;
+  const t=e.touches[0]; const dx=t.clientX-startX; const dy=e.touches[0].clientY-startY;
   card.style.transform = `translate(${dx}px, ${dy*.1}px) rotate(${dx*.05}deg)`;
   card.style.opacity = String(clamp(1 - Math.abs(dx)/260, 0.45, 1));
 }, {passive:true});
