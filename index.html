@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>First Things First — v72</title>
+<title>First Things First — v73</title>
 <style>
   :root{
     --bg:#0b0f14;
@@ -83,7 +83,7 @@
   <div class="topwrap">
     <div class="logo-wrap" style="display:flex;align-items:center;gap:.5rem;">
       <div class="logo" id="btnFirst" title="First Things First">First Things First</div>
-      <span class="version">v72</span>
+      <span class="version">v73</span>
       <button id="btnSettings" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:#0f172a;border:1px solid var(--border);border-radius:.55rem;" title="Settings" type="button">⚙</button>
     </div>
     <div class="actions">
@@ -171,7 +171,7 @@ const DBG = {
   countsEl: null,
   log(){ 
     const msg = Array.from(arguments).map(x=> typeof x==='string'? x : JSON.stringify(x)).join(' ');
-    console.log('[v72]', msg);
+    console.log('[v73]', msg);
     if (DBG.enabled && DBG.logEl) { DBG.logEl.textContent += msg + "\\n"; }
   },
   setCats(txt){ if (DBG.enabled && DBG.catsEl) DBG.catsEl.textContent = txt; },
@@ -245,7 +245,8 @@ const seedData = [
 let ALL_CATEGORIES = Array.from(new Set(seedData.map(e=>e.category))).sort();
 
 /* ===== External data config ===== */
-const EXTRA_FILES = ['space.ndjson']; // add more: 'history.ndjson','science.ndjson', ...
+/* Safe, merge-based declaration to avoid duplicate const errors */
+window.EXTRA_FILES = (window.EXTRA_FILES || []).concat(['space.ndjson']); // add more as needed
 const LEGACY_BUNDLES = ['events_full.ndjson','events_full.json','events_full.txt'];
 
 /* ===== Game state ===== */
@@ -489,7 +490,7 @@ async function tryFetch(url){
     // Strip UTF-8 BOM if present
     if (txt.charCodeAt(0) === 0xFEFF) { txt = txt.slice(1); DBG.log('Stripped BOM from', url); }
     // Also handle BOM via regex just in case
-    txt = txt.replace(/^\\uFEFF/, '');
+    txt = txt.replace(/^\uFEFF/, '');
     DBG.log('Bytes', txt.length, 'from', url);
     return txt;
   }catch(e){ DBG.log('Fetch error', (e&&e.message)||e, 'for', url); return null; }
@@ -501,7 +502,7 @@ function normalizeOne(o){
   const category = o.category || 'Misc';
   let year = o.year;
   if (year==null && o.date) {
-    const m = String(o.date).match(/(-?\\d{1,6})/);
+    const m = String(o.date).match(/(-?\d{1,6})/);
     if (m) year = parseInt(m[1],10);
   }
   if (year==null) return null;
@@ -520,7 +521,7 @@ async function loadBundleFile(file){
       extra = normalizeArray(JSON.parse(trimmed));
     } else {
       // Else assume NDJSON (one object per line)
-      const lines = text.split(/\\r?\\n/).filter(Boolean);
+      const lines = text.split(/\r?\n/).filter(Boolean);
       for (let i=0;i<lines.length;i++){
         try { extra.push(normalizeOne(JSON.parse(lines[i]))); } catch(e){ DBG.log('Bad line', i+1, 'in', file); }
         if (i%200===0) await sleep(0);
@@ -544,8 +545,6 @@ async function loadBundleFile(file){
   return added;
 }
 
-const EXTRA_FILES = ['space.ndjson']; // ensure defined after functions
-
 async function backgroundLoad(forceToast){
   DBG.log('Starting backgroundLoad');
   // Try legacy bundle names first (first successful one stops here)
@@ -555,7 +554,8 @@ async function backgroundLoad(forceToast){
   }
   // Otherwise, attempt each EXTRA_FILES entry
   let totalAdded = 0;
-  for (const file of EXTRA_FILES){
+  const files = Array.isArray(window.EXTRA_FILES) ? window.EXTRA_FILES : [];
+  for (const file of files){
     const added = await loadBundleFile(file);
     totalAdded += added;
     if (forceToast){
