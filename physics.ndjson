@@ -1,235 +1,95 @@
-{"title": "Classical mechanics", "category": "Physics", "date": "-300"}
-{"title": "Laws of motion", "category": "Physics", "date": "1687", "wiki": "https://en.wikipedia.org/wiki/Newton%27s_laws_of_motion"}
-{"title": "Philosophiæ Naturalis Principia Mathematica", "category": "Physics", "date": "1687", "wiki": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica"}
-{"title": "Inverse-square law", "category": "Physics", "date": "1687", "wiki": "https://en.wikipedia.org/wiki/Inverse-square_law"}
-{"title": "Conservation of energy", "category": "Physics", "date": "1840", "wiki": "https://en.wikipedia.org/wiki/Conservation_of_energy"}
-{"title": "Work–energy theorem", "category": "Physics", "date": "1829", "wiki": "https://en.wikipedia.org/wiki/Work%E2%80%93energy_theorem"}
-{"title": "Noether's theorem", "category": "Physics", "date": "1918", "wiki": "https://en.wikipedia.org/wiki/Noether%27s_theorem"}
-{"title": "Lagrangian mechanics", "category": "Physics", "date": "1788", "wiki": "https://en.wikipedia.org/wiki/Lagrangian_mechanics"}
-{"title": "Hamiltonian mechanics", "category": "Physics", "date": "1833", "wiki": "https://en.wikipedia.org/wiki/Hamiltonian_mechanics"}
-{"title": "Kepler's laws of planetary motion", "category": "Physics", "date": "1609", "wiki": "https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion"}
-{"title": "Galilean relativity", "category": "Physics", "date": "1632", "wiki": "https://en.wikipedia.org/wiki/Galilean_relativity"}
-{"title": "Coriolis force", "category": "Physics", "date": "1835", "wiki": "https://en.wikipedia.org/wiki/Coriolis_force"}
-{"title": "Fermi–Pasta–Ulam–Tsingou problem", "category": "Physics", "date": "1955", "wiki": "https://en.wikipedia.org/wiki/Fermi%E2%80%93Pasta%E2%80%93Ulam%E2%80%93Tsingou_problem"}
-{"title": "Carnot cycle", "category": "Physics", "date": "1824", "wiki": "https://en.wikipedia.org/wiki/Carnot_cycle"}
-{"title": "Clausius statement of the second law", "category": "Physics", "date": "1850", "wiki": "https://en.wikipedia.org/wiki/Second_law_of_thermodynamics"}
-{"title": "Entropy (thermodynamics)", "category": "Physics", "date": "1865", "wiki": "https://en.wikipedia.org/wiki/Entropy"}
-{"title": "Boltzmann equation", "category": "Physics", "date": "1872", "wiki": "https://en.wikipedia.org/wiki/Boltzmann_equation"}
-{"title": "Maxwell–Boltzmann distribution", "category": "Physics", "date": "1860", "wiki": "https://en.wikipedia.org/wiki/Maxwell%E2%80%93Boltzmann_distribution"}
-{"title": "Gibbs ensemble", "category": "Physics", "date": "1902", "wiki": "https://en.wikipedia.org/wiki/Ensemble_(statistical_mechanics)"}
-{"title": "Brownian motion", "category": "Physics", "date": "1827", "wiki": "https://en.wikipedia.org/wiki/Brownian_motion"}
-{"title": "Fluctuation–dissipation theorem", "category": "Physics", "date": "1951", "wiki": "https://en.wikipedia.org/wiki/Fluctuation%E2%80%93dissipation_theorem"}
-{"title": "Ising model", "category": "Physics", "date": "1920", "wiki": "https://en.wikipedia.org/wiki/Ising_model"}
-{"title": "Renormalization group", "category": "Physics", "date": "1951", "wiki": "https://en.wikipedia.org/wiki/Renormalization_group"}
-{"title": "Phase transition", "category": "Physics", "date": "1933", "wiki": "https://en.wikipedia.org/wiki/Phase_transition"}
-{"title": "Critical phenomena", "category": "Physics", "date": "1965", "wiki": "https://en.wikipedia.org/wiki/Critical_phenomena"}
-{"title": "Coulomb's law", "category": "Physics", "date": "1785", "wiki": "https://en.wikipedia.org/wiki/Coulomb%27s_law"}
-{"title": "Oersted's experiment", "category": "Physics", "date": "1820", "wiki": "https://en.wikipedia.org/wiki/%C3%98rsted%27s_law"}
-{"title": "Ampère's circuital law", "category": "Physics", "date": "1820", "wiki": "https://en.wikipedia.org/wiki/Amp%C3%A8re%27s_circuital_law"}
-{"title": "Ohm's law", "category": "Physics", "date": "1827", "wiki": "https://en.wikipedia.org/wiki/Ohm%27s_law"}
-{"title": "Faraday's law of induction", "category": "Physics", "date": "1831", "wiki": "https://en.wikipedia.org/wiki/Faraday%27s_law_of_induction"}
-{"title": "Maxwell's equations", "category": "Physics", "date": "1865", "wiki": "https://en.wikipedia.org/wiki/Maxwell%27s_equations"}
-{"title": "Displacement current", "category": "Physics", "date": "1861", "wiki": "https://en.wikipedia.org/wiki/Displacement_current"}
-{"title": "Electromagnetic wave", "category": "Physics", "date": "1865", "wiki": "https://en.wikipedia.org/wiki/Electromagnetic_radiation"}
-{"title": "Hertz experiments on radio waves", "category": "Physics", "date": "1887", "wiki": "https://en.wikipedia.org/wiki/Heinrich_Hertz"}
-{"title": "Zeeman effect", "category": "Physics", "date": "1896", "wiki": "https://en.wikipedia.org/wiki/Zeeman_effect"}
-{"title": "Hall effect", "category": "Physics", "date": "1879", "wiki": "https://en.wikipedia.org/wiki/Hall_effect"}
-{"title": "Aharonov–Bohm effect", "category": "Physics", "date": "1959", "wiki": "https://en.wikipedia.org/wiki/Aharonov%E2%80%93Bohm_effect"}
-{"title": "Double-slit experiment", "category": "Physics", "date": "1801", "wiki": "https://en.wikipedia.org/wiki/Double-slit_experiment"}
-{"title": "Snell's law", "category": "Physics", "date": "1621", "wiki": "https://en.wikipedia.org/wiki/Snell%27s_law"}
-{"title": "Huygens–Fresnel principle", "category": "Physics", "date": "1678", "wiki": "https://en.wikipedia.org/wiki/Huygens%E2%80%93Fresnel_principle"}
-{"title": "Diffraction", "category": "Physics", "date": "1665", "wiki": "https://en.wikipedia.org/wiki/Diffraction"}
-{"title": "Interference (wave propagation)", "category": "Physics", "date": "1801", "wiki": "https://en.wikipedia.org/wiki/Interference_(wave_propagation)"}
-{"title": "Polarization (waves)", "category": "Physics", "date": "1812", "wiki": "https://en.wikipedia.org/wiki/Polarization_(waves)"}
-{"title": "Malus's law", "category": "Physics", "date": "1810", "wiki": "https://en.wikipedia.org/wiki/Malus%27s_law"}
-{"title": "Brewster's angle", "category": "Physics", "date": "1815", "wiki": "https://en.wikipedia.org/wiki/Brewster%27s_angle"}
-{"title": "Rayleigh scattering", "category": "Physics", "date": "1871", "wiki": "https://en.wikipedia.org/wiki/Rayleigh_scattering"}
-{"title": "Compton effect", "category": "Physics", "date": "1923", "wiki": "https://en.wikipedia.org/wiki/Compton_scattering"}
-{"title": "Stimulated emission", "category": "Physics", "date": "1917", "wiki": "https://en.wikipedia.org/wiki/Stimulated_emission"}
-{"title": "Laser", "category": "Physics", "date": "1960", "wiki": "https://en.wikipedia.org/wiki/Laser"}
-{"title": "Nonlinear optics", "category": "Physics", "date": "1961", "wiki": "https://en.wikipedia.org/wiki/Nonlinear_optics"}
-{"title": "Black-body radiation", "category": "Physics", "date": "1900", "wiki": "https://en.wikipedia.org/wiki/Black-body_radiation"}
-{"title": "Planck constant", "category": "Physics", "date": "1900", "wiki": "https://en.wikipedia.org/wiki/Planck_constant"}
-{"title": "Photoelectric effect", "category": "Physics", "date": "1905", "wiki": "https://en.wikipedia.org/wiki/Photoelectric_effect"}
-{"title": "Wave–particle duality", "category": "Physics", "date": "1924", "wiki": "https://en.wikipedia.org/wiki/Wave%E2%80%93particle_duality"}
-{"title": "de Broglie hypothesis", "category": "Physics", "date": "1924", "wiki": "https://en.wikipedia.org/wiki/Matter_wave"}
-{"title": "Schrödinger equation", "category": "Physics", "date": "1926", "wiki": "https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation"}
-{"title": "Heisenberg uncertainty principle", "category": "Physics", "date": "1927", "wiki": "https://en.wikipedia.org/wiki/Uncertainty_principle"}
-{"title": "Matrix mechanics", "category": "Physics", "date": "1925", "wiki": "https://en.wikipedia.org/wiki/Matrix_mechanics"}
-{"title": "Dirac equation", "category": "Physics", "date": "1928", "wiki": "https://en.wikipedia.org/wiki/Dirac_equation"}
-{"title": "Pauli exclusion principle", "category": "Physics", "date": "1925", "wiki": "https://en.wikipedia.org/wiki/Pauli_exclusion_principle"}
-{"title": "Born rule", "category": "Physics", "date": "1926", "wiki": "https://en.wikipedia.org/wiki/Born_rule"}
-{"title": "Copenhagen interpretation", "category": "Physics", "date": "1927", "wiki": "https://en.wikipedia.org/wiki/Copenhagen_interpretation"}
-{"title": "EPR paradox", "category": "Physics", "date": "1935", "wiki": "https://en.wikipedia.org/wiki/EPR_paradox"}
-{"title": "Bell's theorem", "category": "Physics", "date": "1964", "wiki": "https://en.wikipedia.org/wiki/Bell%27s_theorem"}
-{"title": "Quantum decoherence", "category": "Physics", "date": "1970", "wiki": "https://en.wikipedia.org/wiki/Quantum_decoherence"}
-{"title": "Many-worlds interpretation", "category": "Physics", "date": "1957", "wiki": "https://en.wikipedia.org/wiki/Many-worlds_interpretation"}
-{"title": "Pilot wave theory", "category": "Physics", "date": "1952", "wiki": "https://en.wikipedia.org/wiki/De_Broglie%E2%80%93Bohm_theory"}
-{"title": "Quantum entanglement", "category": "Physics", "date": "1935", "wiki": "https://en.wikipedia.org/wiki/Quantum_entanglement"}
-{"title": "Rutherford gold foil experiment", "category": "Physics", "date": "1909", "wiki": "https://en.wikipedia.org/wiki/Geiger%E2%80%93Marsden_experiment"}
-{"title": "Bohr model", "category": "Physics", "date": "1913", "wiki": "https://en.wikipedia.org/wiki/Bohr_model"}
-{"title": "Franck–Hertz experiment", "category": "Physics", "date": "1914", "wiki": "https://en.wikipedia.org/wiki/Franck%E2%80%93Hertz_experiment"}
-{"title": "Stern–Gerlach experiment", "category": "Physics", "date": "1922", "wiki": "https://en.wikipedia.org/wiki/Stern%E2%80%93Gerlach_experiment"}
-{"title": "Isotope", "category": "Physics", "date": "1913", "wiki": "https://en.wikipedia.org/wiki/Isotope"}
-{"title": "Nuclear fission", "category": "Physics", "date": "1938", "wiki": "https://en.wikipedia.org/wiki/Nuclear_fission"}
-{"title": "Nuclear fusion", "category": "Physics", "date": "1920", "wiki": "https://en.wikipedia.org/wiki/Nuclear_fusion"}
-{"title": "Chain reaction", "category": "Physics", "date": "1933", "wiki": "https://en.wikipedia.org/wiki/Nuclear_chain_reaction"}
-{"title": "Manhattan Project", "category": "Physics", "date": "1942", "wiki": "https://en.wikipedia.org/wiki/Manhattan_Project"}
-{"title": "Radioactive decay", "category": "Physics", "date": "1896", "wiki": "https://en.wikipedia.org/wiki/Radioactive_decay"}
-{"title": "Alpha particle", "category": "Physics", "date": "1899", "wiki": "https://en.wikipedia.org/wiki/Alpha_particle"}
-{"title": "Beta decay", "category": "Physics", "date": "1896", "wiki": "https://en.wikipedia.org/wiki/Beta_decay"}
-{"title": "Gamma ray", "category": "Physics", "date": "1900", "wiki": "https://en.wikipedia.org/wiki/Gamma_ray"}
-{"title": "Positron", "category": "Physics", "date": "1932", "wiki": "https://en.wikipedia.org/wiki/Positron"}
-{"title": "Neutron", "category": "Physics", "date": "1932", "wiki": "https://en.wikipedia.org/wiki/Neutron"}
-{"title": "Proton", "category": "Physics", "date": "1917", "wiki": "https://en.wikipedia.org/wiki/Proton"}
-{"title": "Mössbauer effect", "category": "Physics", "date": "1958", "wiki": "https://en.wikipedia.org/wiki/M%C3%B6ssbauer_effect"}
-{"title": "Laser cooling", "category": "Physics", "date": "1985", "wiki": "https://en.wikipedia.org/wiki/Laser_cooling"}
-{"title": "Bose–Einstein condensate", "category": "Physics", "date": "1995", "wiki": "https://en.wikipedia.org/wiki/Bose%E2%80%93Einstein_condensate"}
-{"title": "Superconductivity", "category": "Physics", "date": "1911", "wiki": "https://en.wikipedia.org/wiki/Superconductivity"}
-{"title": "Meissner effect", "category": "Physics", "date": "1933", "wiki": "https://en.wikipedia.org/wiki/Meissner_effect"}
-{"title": "BCS theory", "category": "Physics", "date": "1957", "wiki": "https://en.wikipedia.org/wiki/BCS_theory"}
-{"title": "Ginzburg–Landau theory", "category": "Physics", "date": "1950", "wiki": "https://en.wikipedia.org/wiki/Ginzburg%E2%80%93Landau_theory"}
-{"title": "Quantum Hall effect", "category": "Physics", "date": "1980", "wiki": "https://en.wikipedia.org/wiki/Quantum_Hall_effect"}
-{"title": "Fractional quantum Hall effect", "category": "Physics", "date": "1982", "wiki": "https://en.wikipedia.org/wiki/Fractional_quantum_Hall_effect"}
-{"title": "Graphene", "category": "Physics", "date": "2004", "wiki": "https://en.wikipedia.org/wiki/Graphene"}
-{"title": "Topological insulator", "category": "Physics", "date": "2007", "wiki": "https://en.wikipedia.org/wiki/Topological_insulator"}
-{"title": "Spintronics", "category": "Physics", "date": "1988", "wiki": "https://en.wikipedia.org/wiki/Spintronics"}
-{"title": "Semiconductor", "category": "Physics", "date": "1833", "wiki": "https://en.wikipedia.org/wiki/Semiconductor"}
-{"title": "Transistor", "category": "Physics", "date": "1947", "wiki": "https://en.wikipedia.org/wiki/Transistor"}
-{"title": "MOSFET", "category": "Physics", "date": "1959", "wiki": "https://en.wikipedia.org/wiki/MOSFET"}
-{"title": "Quantum dot", "category": "Physics", "date": "1980", "wiki": "https://en.wikipedia.org/wiki/Quantum_dot"}
-{"title": "Special relativity", "category": "Physics", "date": "1905", "wiki": "https://en.wikipedia.org/wiki/Special_relativity"}
-{"title": "General relativity", "category": "Physics", "date": "1915", "wiki": "https://en.wikipedia.org/wiki/General_relativity"}
-{"title": "Gravitational lensing", "category": "Physics", "date": "1919", "wiki": "https://en.wikipedia.org/wiki/Gravitational_lens"}
-{"title": "Mercury perihelion advance", "category": "Physics", "date": "1859", "wiki": "https://en.wikipedia.org/wiki/Perihelion_precession_of_Mercury"}
-{"title": "Gravitational wave", "category": "Physics", "date": "1916", "wiki": "https://en.wikipedia.org/wiki/Gravitational_wave"}
-{"title": "Frame dragging", "category": "Physics", "date": "1918", "wiki": "https://en.wikipedia.org/wiki/Frame-dragging"}
-{"title": "Equivalence principle", "category": "Physics", "date": "1907", "wiki": "https://en.wikipedia.org/wiki/Equivalence_principle"}
-{"title": "Time dilation", "category": "Physics", "date": "1905", "wiki": "https://en.wikipedia.org/wiki/Time_dilation"}
-{"title": "Eddington eclipse experiment", "category": "Physics", "date": "1919", "wiki": "https://en.wikipedia.org/wiki/Solar_eclipse_of_May_29,_1919"}
-{"title": "Quantum field theory", "category": "Physics", "date": "1929", "wiki": "https://en.wikipedia.org/wiki/Quantum_field_theory"}
-{"title": "Gauge theory", "category": "Physics", "date": "1954", "wiki": "https://en.wikipedia.org/wiki/Gauge_theory"}
-{"title": "Renormalization", "category": "Physics", "date": "1947", "wiki": "https://en.wikipedia.org/wiki/Renormalization"}
-{"title": "Electroweak interaction", "category": "Physics", "date": "1967", "wiki": "https://en.wikipedia.org/wiki/Electroweak_interaction"}
-{"title": "Quantum chromodynamics", "category": "Physics", "date": "1973", "wiki": "https://en.wikipedia.org/wiki/Quantum_chromodynamics"}
-{"title": "Asymptotic freedom", "category": "Physics", "date": "1973", "wiki": "https://en.wikipedia.org/wiki/Asymptotic_freedom"}
-{"title": "Higgs mechanism", "category": "Physics", "date": "1964", "wiki": "https://en.wikipedia.org/wiki/Higgs_mechanism"}
-{"title": "Higgs boson", "category": "Physics", "date": "2012", "wiki": "https://en.wikipedia.org/wiki/Higgs_boson"}
-{"title": "W and Z bosons", "category": "Physics", "date": "1983", "wiki": "https://en.wikipedia.org/wiki/Weak_interaction"}
-{"title": "Gluon", "category": "Physics", "date": "1979", "wiki": "https://en.wikipedia.org/wiki/Gluon"}
-{"title": "Charm quark", "category": "Physics", "date": "1974", "wiki": "https://en.wikipedia.org/wiki/Charm_quark"}
-{"title": "Bottom quark", "category": "Physics", "date": "1977", "wiki": "https://en.wikipedia.org/wiki/Bottom_quark"}
-{"title": "Top quark", "category": "Physics", "date": "1995", "wiki": "https://en.wikipedia.org/wiki/Top_quark"}
-{"title": "Muon", "category": "Physics", "date": "1936", "wiki": "https://en.wikipedia.org/wiki/Muon"}
-{"title": "Tau (particle)", "category": "Physics", "date": "1975", "wiki": "https://en.wikipedia.org/wiki/Tau_(particle)"}
-{"title": "Neutrino", "category": "Physics", "date": "1956", "wiki": "https://en.wikipedia.org/wiki/Neutrino"}
-{"title": "Neutrino oscillation", "category": "Physics", "date": "1998", "wiki": "https://en.wikipedia.org/wiki/Neutrino_oscillation"}
-{"title": "CKM matrix", "category": "Physics", "date": "1963", "wiki": "https://en.wikipedia.org/wiki/Cabibbo%E2%80%93Kobayashi%E2%80%93Maskawa_matrix"}
-{"title": "CP violation", "category": "Physics", "date": "1964", "wiki": "https://en.wikipedia.org/wiki/CP_violation"}
-{"title": "Parity violation", "category": "Physics", "date": "1957", "wiki": "https://en.wikipedia.org/wiki/Parity_(physics)#Parity_violation"}
-{"title": "Symmetry breaking", "category": "Physics", "date": "1960", "wiki": "https://en.wikipedia.org/wiki/Spontaneous_symmetry_breaking"}
-{"title": "Anomalies in quantum field theory", "category": "Physics", "date": "1969", "wiki": "https://en.wikipedia.org/wiki/Chiral_anomaly"}
-{"title": "Hubble's law", "category": "Physics", "date": "1929", "wiki": "https://en.wikipedia.org/wiki/Hubble%27s_law"}
-{"title": "Big Bang", "category": "Physics", "date": "1949", "wiki": "https://en.wikipedia.org/wiki/Big_Bang"}
-{"title": "Cosmic microwave background", "category": "Physics", "date": "1965", "wiki": "https://en.wikipedia.org/wiki/Cosmic_microwave_background"}
-{"title": "Cosmic inflation", "category": "Physics", "date": "1980", "wiki": "https://en.wikipedia.org/wiki/Inflation_(cosmology)"}
-{"title": "Dark matter", "category": "Physics", "date": "1933", "wiki": "https://en.wikipedia.org/wiki/Dark_matter"}
-{"title": "Galaxy rotation problem", "category": "Physics", "date": "1970", "wiki": "https://en.wikipedia.org/wiki/Galaxy_rotation_curve"}
-{"title": "Dark energy", "category": "Physics", "date": "1998", "wiki": "https://en.wikipedia.org/wiki/Dark_energy"}
-{"title": "Pulsar", "category": "Physics", "date": "1967", "wiki": "https://en.wikipedia.org/wiki/Pulsar"}
-{"title": "Neutron star", "category": "Physics", "date": "1934", "wiki": "https://en.wikipedia.org/wiki/Neutron_star"}
-{"title": "Black hole", "category": "Physics", "date": "1967", "wiki": "https://en.wikipedia.org/wiki/Black_hole"}
-{"title": "Michelson–Morley experiment", "category": "Physics", "date": "1887", "wiki": "https://en.wikipedia.org/wiki/Michelson%E2%80%93Morley_experiment"}
-{"title": "Oil drop experiment", "category": "Physics", "date": "1909", "wiki": "https://en.wikipedia.org/wiki/Oil_drop_experiment"}
-{"title": "Cloud chamber", "category": "Physics", "date": "1911", "wiki": "https://en.wikipedia.org/wiki/Cloud_chamber"}
-{"title": "Bubble chamber", "category": "Physics", "date": "1952", "wiki": "https://en.wikipedia.org/wiki/Bubble_chamber"}
-{"title": "Cyclotron", "category": "Physics", "date": "1930", "wiki": "https://en.wikipedia.org/wiki/Cyclotron"}
-{"title": "Synchrotron", "category": "Physics", "date": "1945", "wiki": "https://en.wikipedia.org/wiki/Synchrotron"}
-{"title": "CERN", "category": "Physics", "date": "1954", "wiki": "https://en.wikipedia.org/wiki/CERN"}
-{"title": "Tevatron", "category": "Physics", "date": "1983", "wiki": "https://en.wikipedia.org/wiki/Tevatron"}
-{"title": "Large Hadron Collider", "category": "Physics", "date": "2008", "wiki": "https://en.wikipedia.org/wiki/Large_Hadron_Collider"}
-{"title": "ATLAS experiment", "category": "Physics", "date": "2008", "wiki": "https://en.wikipedia.org/wiki/ATLAS_experiment"}
-{"title": "CMS experiment", "category": "Physics", "date": "2008", "wiki": "https://en.wikipedia.org/wiki/Compact_Muon_Solenoid"}
-{"title": "LEP", "category": "Physics", "date": "1989", "wiki": "https://en.wikipedia.org/wiki/Large_Electron%E2%80%93Positron_Collider"}
-{"title": "SLAC", "category": "Physics", "date": "1962", "wiki": "https://en.wikipedia.org/wiki/SLAC_National_Accelerator_Laboratory"}
-{"title": "DESY", "category": "Physics", "date": "1959", "wiki": "https://en.wikipedia.org/wiki/DESY"}
-{"title": "PETRA (particle accelerator)", "category": "Physics", "date": "1978", "wiki": "https://en.wikipedia.org/wiki/PETRA_(particle_accelerator)"}
-{"title": "LIGO", "category": "Physics", "date": "2002", "wiki": "https://en.wikipedia.org/wiki/LIGO"}
-{"title": "First observation of gravitational waves", "category": "Physics", "date": "2015", "wiki": "https://en.wikipedia.org/wiki/First_observation_of_gravitational_waves"}
-{"title": "Shannon information theory", "category": "Physics", "date": "1948", "wiki": "https://en.wikipedia.org/wiki/Information_theory"}
-{"title": "Landauer's principle", "category": "Physics", "date": "1961", "wiki": "https://en.wikipedia.org/wiki/Landauer%27s_principle"}
-{"title": "Quantum information", "category": "Physics", "date": "1990", "wiki": "https://en.wikipedia.org/wiki/Quantum_information"}
-{"title": "Quantum teleportation", "category": "Physics", "date": "1997", "wiki": "https://en.wikipedia.org/wiki/Quantum_teleportation"}
-{"title": "Quantum computing", "category": "Physics", "date": "1980", "wiki": "https://en.wikipedia.org/wiki/Quantum_computing"}
-{"title": "Qubit", "category": "Physics", "date": "1995", "wiki": "https://en.wikipedia.org/wiki/Qubit"}
-{"title": "Shor's algorithm", "category": "Physics", "date": "1994", "wiki": "https://en.wikipedia.org/wiki/Shor%27s_algorithm"}
-{"title": "Grover's algorithm", "category": "Physics", "date": "1996", "wiki": "https://en.wikipedia.org/wiki/Grover%27s_algorithm"}
-{"title": "Quantum error correction", "category": "Physics", "date": "1995", "wiki": "https://en.wikipedia.org/wiki/Quantum_error_correction"}
-{"title": "Kapitza resistance", "category": "Physics", "date": "1941", "wiki": "https://en.wikipedia.org/wiki/Kapitza_resistance"}
-{"title": "Superfluidity", "category": "Physics", "date": "1937", "wiki": "https://en.wikipedia.org/wiki/Superfluidity"}
-{"title": "Landau theory of Fermi liquids", "category": "Physics", "date": "1956", "wiki": "https://en.wikipedia.org/wiki/Fermi_liquid_theory"}
-{"title": "Anderson localization", "category": "Physics", "date": "1958", "wiki": "https://en.wikipedia.org/wiki/Anderson_localization"}
-{"title": "Kondo effect", "category": "Physics", "date": "1964", "wiki": "https://en.wikipedia.org/wiki/Kondo_effect"}
-{"title": "Haldane chain", "category": "Physics", "date": "1983", "wiki": "https://en.wikipedia.org/wiki/Haldane_gap"}
-{"title": "BCS–BEC crossover", "category": "Physics", "date": "2004", "wiki": "https://en.wikipedia.org/wiki/BCS%E2%80%93BEC_crossover"}
-{"title": "Magnon", "category": "Physics", "date": "1930", "wiki": "https://en.wikipedia.org/wiki/Magnon"}
-{"title": "Phonon", "category": "Physics", "date": "1932", "wiki": "https://en.wikipedia.org/wiki/Phonon"}
-{"title": "Plasmon", "category": "Physics", "date": "1956", "wiki": "https://en.wikipedia.org/wiki/Plasmon"}
-{"title": "Polaron", "category": "Physics", "date": "1933", "wiki": "https://en.wikipedia.org/wiki/Polaron"}
-{"title": "Exciton", "category": "Physics", "date": "1931", "wiki": "https://en.wikipedia.org/wiki/Exciton"}
-{"title": "Spin glass", "category": "Physics", "date": "1975", "wiki": "https://en.wikipedia.org/wiki/Spin_glass"}
-{"title": "Percolation theory", "category": "Physics", "date": "1957", "wiki": "https://en.wikipedia.org/wiki/Percolation_theory"}
-{"title": "Kolmogorov turbulence", "category": "Physics", "date": "1941", "wiki": "https://en.wikipedia.org/wiki/Kolmogorov%27s_theory_of_turbulence"}
-{"title": "Navier–Stokes equations", "category": "Physics", "date": "1822", "wiki": "https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations"}
-{"title": "Reynolds number", "category": "Physics", "date": "1883", "wiki": "https://en.wikipedia.org/wiki/Reynolds_number"}
-{"title": "Dimensional analysis", "category": "Physics", "date": "1914", "wiki": "https://en.wikipedia.org/wiki/Dimensional_analysis"}
-{"title": "Planck units", "category": "Physics", "date": "1899", "wiki": "https://en.wikipedia.org/wiki/Planck_units"}
-{"title": "Fine-structure constant", "category": "Physics", "date": "1916", "wiki": "https://en.wikipedia.org/wiki/Fine-structure_constant"}
-{"title": "Rydberg constant", "category": "Physics", "date": "1888", "wiki": "https://en.wikipedia.org/wiki/Rydberg_constant"}
-{"title": "Avogadro constant", "category": "Physics", "date": "1909", "wiki": "https://en.wikipedia.org/wiki/Avogadro_constant"}
-{"title": "Boltzmann constant", "category": "Physics", "date": "1900", "wiki": "https://en.wikipedia.org/wiki/Boltzmann_constant"}
-{"title": "Speed of light", "category": "Physics", "date": "1676", "wiki": "https://en.wikipedia.org/wiki/Speed_of_light"}
-{"title": "Michelson interferometer", "category": "Physics", "date": "1881", "wiki": "https://en.wikipedia.org/wiki/Michelson_interferometer"}
-{"title": "Fourier transform", "category": "Physics", "date": "1822", "wiki": "https://en.wikipedia.org/wiki/Fourier_transform"}
-{"title": "Laplace transform", "category": "Physics", "date": "1785", "wiki": "https://en.wikipedia.org/wiki/Laplace_transform"}
-{"title": "Green's function", "category": "Physics", "date": "1828", "wiki": "https://en.wikipedia.org/wiki/Green%27s_function"}
-{"title": "Path integral formulation", "category": "Physics", "date": "1948", "wiki": "https://en.wikipedia.org/wiki/Path_integral_formulation"}
-{"title": "Feynman diagram", "category": "Physics", "date": "1949", "wiki": "https://en.wikipedia.org/wiki/Feynman_diagram"}
-{"title": "Operator algebra", "category": "Physics", "date": "1930", "wiki": "https://en.wikipedia.org/wiki/Operator_theory"}
-{"title": "Lie group", "category": "Physics", "date": "1874", "wiki": "https://en.wikipedia.org/wiki/Lie_group"}
-{"title": "Lorentz transformation", "category": "Physics", "date": "1904", "wiki": "https://en.wikipedia.org/wiki/Lorentz_transformation"}
-{"title": "Minkowski spacetime", "category": "Physics", "date": "1908", "wiki": "https://en.wikipedia.org/wiki/Minkowski_space"}
-{"title": "Schwarzschild metric", "category": "Physics", "date": "1916", "wiki": "https://en.wikipedia.org/wiki/Schwarzschild_metric"}
-{"title": "Kerr metric", "category": "Physics", "date": "1963", "wiki": "https://en.wikipedia.org/wiki/Kerr_metric"}
-{"title": "Hawking radiation", "category": "Physics", "date": "1974", "wiki": "https://en.wikipedia.org/wiki/Hawking_radiation"}
-{"title": "Bekenstein–Hawking entropy", "category": "Physics", "date": "1973", "wiki": "https://en.wikipedia.org/wiki/Bekenstein%E2%80%93Hawking_entropy"}
-{"title": "AdS/CFT correspondence", "category": "Physics", "date": "1997", "wiki": "https://en.wikipedia.org/wiki/AdS/CFT_correspondence"}
-{"title": "String theory", "category": "Physics", "date": "1968", "wiki": "https://en.wikipedia.org/wiki/String_theory"}
-{"title": "Supersymmetry", "category": "Physics", "date": "1971", "wiki": "https://en.wikipedia.org/wiki/Supersymmetry"}
-{"title": "Grand Unified Theory", "category": "Physics", "date": "1974", "wiki": "https://en.wikipedia.org/wiki/Grand_Unified_Theory"}
-{"title": "Kaluza–Klein theory", "category": "Physics", "date": "1921", "wiki": "https://en.wikipedia.org/wiki/Kaluza%E2%80%93Klein_theory"}
-{"title": "Cherenkov radiation", "category": "Physics", "date": "1934", "wiki": "https://en.wikipedia.org/wiki/Cherenkov_radiation"}
-{"title": "Bremsstrahlung", "category": "Physics", "date": "1921", "wiki": "https://en.wikipedia.org/wiki/Bremsstrahlung"}
-{"title": "Synchrotron radiation", "category": "Physics", "date": "1947", "wiki": "https://en.wikipedia.org/wiki/Synchrotron_radiation"}
-{"title": "Betatron", "category": "Physics", "date": "1940", "wiki": "https://en.wikipedia.org/wiki/Betatron"}
-{"title": "Van de Graaff generator", "category": "Physics", "date": "1931", "wiki": "https://en.wikipedia.org/wiki/Van_de_Graaff_generator"}
-{"title": "Vacuum tube", "category": "Physics", "date": "1904", "wiki": "https://en.wikipedia.org/wiki/Vacuum_tube"}
-{"title": "Photoemission spectroscopy", "category": "Physics", "date": "1960", "wiki": "https://en.wikipedia.org/wiki/Photoemission_spectroscopy"}
-{"title": "Angle-resolved photoemission spectroscopy", "category": "Physics", "date": "1980", "wiki": "https://en.wikipedia.org/wiki/Angle-resolved_photoemission_spectroscopy"}
-{"title": "Raman scattering", "category": "Physics", "date": "1928", "wiki": "https://en.wikipedia.org/wiki/Raman_scattering"}
-{"title": "Brillouin scattering", "category": "Physics", "date": "1922", "wiki": "https://en.wikipedia.org/wiki/Brillouin_scattering"}
-{"title": "Neutron scattering", "category": "Physics", "date": "1946", "wiki": "https://en.wikipedia.org/wiki/Neutron_scattering"}
-{"title": "X-ray diffraction", "category": "Physics", "date": "1912", "wiki": "https://en.wikipedia.org/wiki/X-ray_crystallography"}
-{"title": "Crystallography", "category": "Physics", "date": "1912", "wiki": "https://en.wikipedia.org/wiki/Crystallography"}
-{"title": "Scattering theory", "category": "Physics", "date": "1910", "wiki": "https://en.wikipedia.org/wiki/Scattering_theory"}
-{"title": "Wigner–Eckart theorem", "category": "Physics", "date": "1927", "wiki": "https://en.wikipedia.org/wiki/Wigner%E2%80%93Eckart_theorem"}
-{"title": "Selection rule", "category": "Physics", "date": "1920", "wiki": "https://en.wikipedia.org/wiki/Selection_rule"}
-{"title": "Atomic orbital", "category": "Physics", "date": "1913", "wiki": "https://en.wikipedia.org/wiki/Atomic_orbital"}
-{"title": "Periodic table (periodicity)", "category": "Physics", "date": "1869", "wiki": "https://en.wikipedia.org/wiki/Periodic_table"}
-{"title": "Heisenberg ferromagnet", "category": "Physics", "date": "1928", "wiki": "https://en.wikipedia.org/wiki/Heisenberg_model_(quantum)"}
-{"title": "Ising ferromagnet", "category": "Physics", "date": "1920", "wiki": "https://en.wikipedia.org/wiki/Ising_model"}
-{"title": "Order parameter", "category": "Physics", "date": "1937", "wiki": "https://en.wikipedia.org/wiki/Order_parameter"}
-{"title": "Kosterlitz–Thouless transition", "category": "Physics", "date": "1973", "wiki": "https://en.wikipedia.org/wiki/Berezinskii%E2%80%93Kosterlitz%E2%80%93Thouless_transition"}
-{"title": "Renormalization group fixed point", "category": "Physics", "date": "1971", "wiki": "https://en.wikipedia.org/wiki/Renormalization_group"}
-{"title": "Universality (critical phenomena)", "category": "Physics", "date": "1971", "wiki": "https://en.wikipedia.org/wiki/Universality_(dynamical_systems)"}
-{"title": "Perovskite (crystal structure)", "category": "Physics", "date": "1839", "wiki": "https://en.wikipedia.org/wiki/Perovskite_(structure)"}
+{"id": "x-rays-discovered-r-ntgen-1895", "title": "X-rays discovered (Röntgen)", "year": 1895, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Wilhelm_R%C3%B6ntgen"}
+{"id": "radioactivity-discovered-becquerel-1896", "title": "Radioactivity discovered (Becquerel)", "year": 1896, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Antoine_Albert_Becquerel"}
+{"id": "electron-discovered-thomson-1897", "title": "Electron discovered (Thomson)", "year": 1897, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/J._J._Thomson"}
+{"id": "zeeman-effect-discovered-1896", "title": "Zeeman effect discovered", "year": 1896, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Zeeman_effect"}
+{"id": "blackbody-quantization-proposed-planck-1900", "title": "Blackbody quantization proposed (Planck)", "year": 1900, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Max_Planck"}
+{"id": "quantum-theory-named-quanta-introduced-by-planck-1900", "title": "Quantum theory named ‘quanta’ introduced by Planck", "year": 1900, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Planck_constant"}
+{"id": "special-relativity-published-einstein-1905", "title": "Special relativity published (Einstein)", "year": 1905, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Special_relativity"}
+{"id": "photoelectric-effect-explained-einstein-1905", "title": "Photoelectric effect explained (Einstein)", "year": 1905, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Photoelectric_effect"}
+{"id": "brownian-motion-explained-einstein-1905", "title": "Brownian motion explained (Einstein)", "year": 1905, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Brownian_motion"}
+{"id": "first-measurement-of-electron-charge-millikan-oil-drop-1909", "title": "First measurement of electron charge (Millikan oil drop)", "year": 1909, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Oil_drop_experiment"}
+{"id": "rutherford-gold-foil-experiment-reveals-atomic-nucleus-1909", "title": "Rutherford gold‑foil experiment reveals atomic nucleus", "year": 1909, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Geiger%E2%80%93Marsden_experiment"}
+{"id": "atomic-nucleus-proposed-rutherford-1911", "title": "Atomic nucleus proposed (Rutherford)", "year": 1911, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Atomic_nucleus"}
+{"id": "general-relativity-completed-einstein-1915", "title": "General relativity completed (Einstein)", "year": 1915, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/General_relativity"}
+{"id": "eddington-eclipse-expedition-confirms-light-bending-1919", "title": "Eddington eclipse expedition confirms light bending", "year": 1919, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Eddington_experiment"}
+{"id": "proton-identified-rutherford-1919", "title": "Proton identified (Rutherford)", "year": 1919, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Proton#Discovery"}
+{"id": "compton-effect-discovered-compton-1923", "title": "Compton effect discovered (Compton)", "year": 1923, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Compton_scattering"}
+{"id": "matter-waves-proposed-de-broglie-1924", "title": "Matter waves proposed (de Broglie)", "year": 1924, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Matter_wave"}
+{"id": "matrix-mechanics-formulated-heisenberg-1925", "title": "Matrix mechanics formulated (Heisenberg)", "year": 1925, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Matrix_mechanics"}
+{"id": "pauli-exclusion-principle-proposed-1925", "title": "Pauli exclusion principle proposed", "year": 1925, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Pauli_exclusion_principle"}
+{"id": "wave-mechanics-formulated-schr-dinger-1926", "title": "Wave mechanics formulated (Schrödinger)", "year": 1926, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation"}
+{"id": "electron-spin-proposed-uhlenbeck-goudsmit-1925", "title": "Electron spin proposed (Uhlenbeck & Goudsmit)", "year": 1925, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Electron_spin"}
+{"id": "uncertainty-principle-introduced-heisenberg-1927", "title": "Uncertainty principle introduced (Heisenberg)", "year": 1927, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Uncertainty_principle"}
+{"id": "dirac-equation-unifies-quantum-mechanics-relativity-1928", "title": "Dirac equation unifies quantum mechanics & relativity", "year": 1928, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Dirac_equation"}
+{"id": "epr-paradox-proposed-einstein-podolsky-rosen-1935", "title": "EPR paradox proposed (Einstein–Podolsky–Rosen)", "year": 1935, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/EPR_paradox"}
+{"id": "bell-s-theorem-formulated-1964", "title": "Bell's theorem formulated", "year": 1964, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Bell%27s_theorem"}
+{"id": "michelson-morley-experiment-rules-out-ether-1887", "title": "Michelson–Morley experiment rules out ether", "year": 1887, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Michelson%E2%80%93Morley_experiment"}
+{"id": "neutron-discovered-chadwick-1932", "title": "Neutron discovered (Chadwick)", "year": 1932, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Neutron#Discovery"}
+{"id": "positron-discovered-anderson-1932", "title": "Positron discovered (Anderson)", "year": 1932, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Positron#Discovery"}
+{"id": "proton-neutron-nuclear-model-heisenberg-1932", "title": "Proton–neutron nuclear model (Heisenberg)", "year": 1932, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Nuclear_force"}
+{"id": "majorana-fermion-concept-proposed-1937", "title": "Majorana fermion concept proposed", "year": 1937, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Majorana_fermion"}
+{"id": "fission-discovered-hahn-strassmann-1938", "title": "Fission discovered (Hahn, Strassmann)", "year": 1938, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Nuclear_fission"}
+{"id": "first-nuclear-reactor-achieves-criticality-chicago-pile-1-1942", "title": "First nuclear reactor achieves criticality (Chicago Pile‑1)", "year": 1942, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Chicago_Pile-1"}
+{"id": "pion-predicted-yukawa-1935", "title": "Pion predicted (Yukawa)", "year": 1935, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Yukawa_interaction"}
+{"id": "pion-discovered-powell-1947", "title": "Pion discovered (Powell)", "year": 1947, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Pion#Discovery"}
+{"id": "muon-discovered-anderson-neddermeyer-1936", "title": "Muon discovered (Anderson & Neddermeyer)", "year": 1936, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Muon#History"}
+{"id": "kaon-discovered-1947", "title": "Kaon discovered", "year": 1947, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Kaon#Discovery"}
+{"id": "antiproton-discovered-chamberlain-segr-1955", "title": "Antiproton discovered (Chamberlain & Segrè)", "year": 1955, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Antiproton"}
+{"id": "parity-violation-observed-wu-experiment-1957", "title": "Parity violation observed (Wu experiment)", "year": 1957, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Wu_experiment"}
+{"id": "cp-violation-discovered-cronin-fitch-1964", "title": "CP violation discovered (Cronin & Fitch)", "year": 1964, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/CP_violation#Discovery"}
+{"id": "quark-model-proposed-gell-mann-zweig-1964", "title": "Quark model proposed (Gell‑Mann; Zweig)", "year": 1964, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Quark_model"}
+{"id": "deep-inelastic-scattering-reveals-quarks-1968", "title": "Deep inelastic scattering reveals quarks", "year": 1968, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Deep_inelastic_scattering"}
+{"id": "j-discovered-charm-quark-confirmed-1974", "title": "J/ψ discovered — charm quark confirmed", "year": 1974, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/November_Revolution"}
+{"id": "bottom-quark-discovered-fermilab-1977", "title": "Bottom quark discovered (Fermilab)", "year": 1977, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Bottom_quark"}
+{"id": "w-and-z-bosons-discovered-cern-1983", "title": "W and Z bosons discovered (CERN)", "year": 1983, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/W_and_Z_bosons#Discovery"}
+{"id": "top-quark-discovered-cdf-d0-1995", "title": "Top quark discovered (CDF/D0)", "year": 1995, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Top_quark"}
+{"id": "tau-lepton-discovered-spear-1975", "title": "Tau lepton discovered (SPEAR)", "year": 1975, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Tau_(particle)"}
+{"id": "higgs-boson-observed-atlas-cms-2012", "title": "Higgs boson observed (ATLAS/CMS)", "year": 2012, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Higgs_boson#Discovery"}
+{"id": "neutrino-hypothesized-pauli-letter-1930", "title": "Neutrino hypothesized (Pauli letter)", "year": 1930, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Neutrino#History"}
+{"id": "neutrino-named-fermi-1934", "title": "Neutrino named (Fermi)", "year": 1934, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Enrico_Fermi"}
+{"id": "electron-antineutrino-detected-cowan-reines-1956", "title": "Electron antineutrino detected (Cowan–Reines)", "year": 1956, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Cowan%E2%80%93Reines_neutrino_experiment"}
+{"id": "solar-neutrino-problem-identified-homestake-1968", "title": "Solar neutrino problem identified (Homestake)", "year": 1968, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Solar_neutrino_problem"}
+{"id": "atmospheric-neutrino-oscillations-observed-super-k-1998", "title": "Atmospheric neutrino oscillations observed (Super‑K)", "year": 1998, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Neutrino_oscillation#Experimental_evidence"}
+{"id": "solar-neutrino-flavor-change-confirmed-sno-2001", "title": "Solar neutrino flavor change confirmed (SNO)", "year": 2001, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Sudbury_Neutrino_Observatory"}
+{"id": "superconductivity-discovered-onnes-1911", "title": "Superconductivity discovered (Onnes)", "year": 1911, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Superconductivity#History"}
+{"id": "meissner-effect-discovered-1933", "title": "Meissner effect discovered", "year": 1933, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Meissner_effect"}
+{"id": "bcs-theory-formulated-1957", "title": "BCS theory formulated", "year": 1957, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/BCS_theory"}
+{"id": "type-ii-superconductivity-explained-abrikosov-1957", "title": "Type‑II superconductivity explained (Abrikosov)", "year": 1957, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Type-II_superconductor"}
+{"id": "superfluidity-observed-in-helium-4-1937", "title": "Superfluidity observed in helium‑4", "year": 1937, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Superfluidity#History"}
+{"id": "superfluidity-discovered-in-helium-3-1972", "title": "Superfluidity discovered in helium‑3", "year": 1972, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Superfluid_helium-3"}
+{"id": "bose-einstein-condensate-created-rb-87-1995", "title": "Bose–Einstein condensate created (Rb‑87)", "year": 1995, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Bose%E2%80%93Einstein_condensate#First_BECs"}
+{"id": "quantum-hall-effect-discovered-von-klitzing-1980", "title": "Quantum Hall effect discovered (von Klitzing)", "year": 1980, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Quantum_Hall_effect"}
+{"id": "fractional-quantum-hall-effect-discovered-1982", "title": "Fractional quantum Hall effect discovered", "year": 1982, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Fractional_quantum_Hall_effect"}
+{"id": "josephson-effect-predicted-1962", "title": "Josephson effect predicted", "year": 1962, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Josephson_effect"}
+{"id": "graphene-isolated-geim-novoselov-2004", "title": "Graphene isolated (Geim & Novoselov)", "year": 2004, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Graphene#History"}
+{"id": "topological-insulators-experimentally-realized-2007", "title": "Topological insulators experimentally realized", "year": 2007, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Topological_insulator"}
+{"id": "high-temperature-superconductivity-discovered-cuprates-1986", "title": "High‑temperature superconductivity discovered (cuprates)", "year": 1986, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/High-temperature_superconductivity"}
+{"id": "maser-demonstrated-townes-1954", "title": "Maser demonstrated (Townes)", "year": 1954, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Maser"}
+{"id": "laser-first-operated-maiman-1960", "title": "Laser first operated (Maiman)", "year": 1960, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Laser#History"}
+{"id": "semiconductor-laser-demonstrated-1962", "title": "Semiconductor laser demonstrated", "year": 1962, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Semiconductor_laser#History"}
+{"id": "nonlinear-optics-launched-second-harmonic-generation-1961", "title": "Nonlinear optics launched (second‑harmonic generation)", "year": 1961, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Nonlinear_optics"}
+{"id": "optical-solitons-observed-in-fibers-1980", "title": "Optical solitons observed in fibers", "year": 1980, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Optical_soliton"}
+{"id": "optical-frequency-combs-developed-2000", "title": "Optical frequency combs developed", "year": 2000, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Frequency_comb"}
+{"id": "cosmic-expansion-discovered-hubble-1929", "title": "Cosmic expansion discovered (Hubble)", "year": 1929, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Hubble%27s_law"}
+{"id": "cosmic-microwave-background-discovered-penzias-wilson-1965", "title": "Cosmic microwave background discovered (Penzias–Wilson)", "year": 1965, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Cosmic_microwave_background#Discovery"}
+{"id": "cobe-detects-cmb-anisotropy-1992", "title": "COBE detects CMB anisotropy", "year": 1992, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Cosmic_Background_Explorer"}
+{"id": "wmap-releases-first-year-cmb-results-2003", "title": "WMAP releases first-year CMB results", "year": 2003, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/WMAP"}
+{"id": "planck-mission-cosmology-results-2013", "title": "Planck mission cosmology results", "year": 2013, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Planck_(spacecraft)"}
+{"id": "gravitational-lensing-confirmed-twin-quasar-q0957-561-1979", "title": "Gravitational lensing confirmed (Twin Quasar Q0957+561)", "year": 1979, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Gravitational_lens#First_observations"}
+{"id": "dark-matter-evidence-from-galaxy-rotation-curves-rubin-1970", "title": "Dark matter evidence from galaxy rotation curves (Rubin)", "year": 1970, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Galaxy_rotation_curve"}
+{"id": "accelerating-universe-discovered-type-ia-sne-1998", "title": "Accelerating universe discovered (Type Ia SNe)", "year": 1998, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Accelerating_expansion_of_the_universe"}
+{"id": "first-direct-image-of-a-black-hole-shadow-m87-2019", "title": "First direct image of a black hole shadow (M87*)", "year": 2019, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Messier_87#Black_hole"}
+{"id": "gravitational-waves-first-detected-ligo-gw150914-2015", "title": "Gravitational waves first detected (LIGO, GW150914)", "year": 2015, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/GW150914"}
+{"id": "cosmic-rays-extraterrestrial-origin-shown-hess-balloon-flights-1912", "title": "Cosmic rays’ extraterrestrial origin shown (Hess balloon flights)", "year": 1912, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Victor_Franz_Hess"}
+{"id": "cherenkov-radiation-discovered-1934", "title": "Cherenkov radiation discovered", "year": 1934, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Cherenkov_radiation"}
+{"id": "shor-s-algorithm-proposed-for-quantum-factoring-1994", "title": "Shor’s algorithm proposed for quantum factoring", "year": 1994, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Shor%27s_algorithm"}
+{"id": "first-quantum-teleportation-experiment-1997", "title": "First quantum teleportation experiment", "year": 1997, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Quantum_teleportation#History"}
+{"id": "first-two-qubit-quantum-logic-gate-in-ion-trap-1995", "title": "First two‑qubit quantum logic gate in ion trap", "year": 1995, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Quantum_logic_gate"}
+{"id": "superconducting-qubit-coherence-breakthroughs-2007", "title": "Superconducting qubit coherence breakthroughs", "year": 2007, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Superconducting_qubit"}
+{"id": "quantum-electrodynamics-renormalized-dyson-feynman-schwinger-tomonaga-1949", "title": "Quantum electrodynamics renormalized (Dyson, Feynman, Schwinger, Tomonaga)", "year": 1949, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Quantum_electrodynamics"}
+{"id": "asymptotic-freedom-in-qcd-discovered-1973", "title": "Asymptotic freedom in QCD discovered", "year": 1973, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Asymptotic_freedom"}
+{"id": "electroweak-theory-unification-glashow-weinberg-salam-1967", "title": "Electroweak theory unification (Glashow–Weinberg–Salam)", "year": 1967, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Electroweak_interaction"}
+{"id": "spontaneous-symmetry-breaking-and-higgs-mechanism-1964", "title": "Spontaneous symmetry breaking and Higgs mechanism", "year": 1964, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Higgs_mechanism"}
+{"id": "avogadro-constant-refined-via-x-ray-crystallography-1913", "title": "Avogadro constant refined via X‑ray crystallography", "year": 1913, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Avogadro_constant"}
+{"id": "fine-structure-constant-measured-precisely-lamb-shift-era-1947", "title": "Fine‑structure constant measured precisely (Lamb shift era)", "year": 1947, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/Lamb_shift"}
+{"id": "si-redefined-with-fixed-fundamental-constants-2018", "title": "SI redefined with fixed fundamental constants", "year": 2018, "category": "Physics", "wiki": "https://en.wikipedia.org/wiki/International_System_of_Units#2019_redefinition"}
