@@ -1,0 +1,1 @@
+// Full extracted script goes here
