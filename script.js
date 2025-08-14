@@ -1,4 +1,3 @@
-
 const events = [
   { title: "Moon landing", year: 1969, wiki: "https://en.wikipedia.org/wiki/Moon_landing" },
   { title: "Fall of Berlin Wall", year: 1989, wiki: "https://en.wikipedia.org/wiki/Berlin_Wall" },

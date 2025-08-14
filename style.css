@@ -2,47 +2,46 @@ body {
   background: #0b0f14;
   color: #e5e7eb;
   font-family: system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-.topbar {
-  background: #111827;
-  padding: 1rem;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-.game-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-}
-.card {
-  background: #1f2937;
-  border-radius: 1rem;
-  padding: 2rem;
-  margin: 1rem;
-  width: 90%;
-  max-width: 500px;
   text-align: center;
-  font-size: 1.2rem;
+  margin: 0;
+  padding: 2em;
 }
-.label {
-  font-size: 1rem;
-  margin: 0.5rem;
-  color: #94a3b8;
+
+.container {
+  max-width: 600px;
+  margin: auto;
 }
-#feedback {
-  font-size: 1.4rem;
-  margin-top: 1rem;
+
+.card {
+  background: #111827;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 8px;
+  font-size: 1.2em;
 }
+
+.vs {
+  font-size: 2em;
+  margin: 0.5em;
+}
+
+.buttons button {
+  margin: 0.5em;
+  padding: 0.7em 1.5em;
+  font-size: 1em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #38bdf8;
+  color: white;
+}
+
+#result {
+  font-size: 1.2em;
+  margin-top: 1em;
+}
+
 #streak {
-  margin-top: 0.5rem;
-  color: #38bdf8;
+  margin-top: 0.5em;
+  font-weight: bold;
 }
