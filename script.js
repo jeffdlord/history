@@ -1,62 +1,43 @@
+
 const events = [
-  { title: "Moon Landing", year: 1969, link: "https://en.wikipedia.org/wiki/Moon_landing" },
-  { title: "Berlin Wall Falls", year: 1989, link: "https://en.wikipedia.org/wiki/Berlin_Wall" },
-  { title: "iPhone Released", year: 2007, link: "https://en.wikipedia.org/wiki/IPhone_(1st_generation)" },
-  { title: "Declaration of Independence", year: 1776, link: "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence" },
-  { title: "First Website Goes Live", year: 1991, link: "https://en.wikipedia.org/wiki/History_of_the_World_Wide_Web" }
+  { title: "Moon landing", year: 1969, wiki: "https://en.wikipedia.org/wiki/Moon_landing" },
+  { title: "Fall of Berlin Wall", year: 1989, wiki: "https://en.wikipedia.org/wiki/Berlin_Wall" },
+  { title: "Invention of the Internet", year: 1983, wiki: "https://en.wikipedia.org/wiki/History_of_the_Internet" },
+  { title: "Start of World War II", year: 1939, wiki: "https://en.wikipedia.org/wiki/World_War_II" },
+  { title: "Signing of the Declaration of Independence", year: 1776, wiki: "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence" }
 ];
 
-let current = [];
 let streak = 0;
 
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+function newGame() {
+  const current = [events[Math.floor(Math.random() * events.length)], events[Math.floor(Math.random() * events.length)]];
+  document.getElementById("eventA").innerHTML = `<a href="${current[0].wiki}" target="_blank">${current[0].title}</a>`;
+  document.getElementById("eventB").innerHTML = `<a href="${current[1].wiki}" target="_blank">${current[1].title}</a>`;
+
+  const result = document.getElementById("result");
+  result.innerText = "";
+
+  const correctDirection = current[0].year < current[1].year ? "left" : "right";
+
+  function handleAnswer(direction) {
+    if (direction === correctDirection) {
+      streak++;
+      result.innerText = "✅ Correct!";
+    } else {
+      streak = 0;
+      result.innerText = "❌ Wrong!";
+    }
+    document.getElementById("streak").innerText = `Streak: ${streak}`;
+    newGame();
   }
+
+  document.getElementById("leftBtn").onclick = () => handleAnswer("left");
+  document.getElementById("rightBtn").onclick = () => handleAnswer("right");
+
+  document.onkeydown = function (e) {
+    if (e.key === "ArrowLeft") handleAnswer("left");
+    if (e.key === "ArrowRight") handleAnswer("right");
+  };
 }
 
-function startGame() {
-  shuffle(events);
-  pickPair();
-  updateStreak();
-}
-
-function pickPair() {
-  current = [events[0], events[1]];
-  document.getElementById("cardA").innerHTML = `<a href="\${current[0].link}" target="_blank">\${current[0].title}</a>`;
-  document.getElementById("cardB").innerHTML = `<a href="\${current[1].link}" target="_blank">\${current[1].title}</a>`;
-  document.getElementById("feedback").textContent = "";
-}
-
-function updateStreak() {
-  document.getElementById("streak").textContent = "Streak: " + streak;
-}
-
-function judgeSwipe(direction) {
-  const [a, b] = current;
-  let correct = false;
-  if (direction === "left" && a.year < b.year) correct = true;
-  if (direction === "right" && a.year > b.year) correct = true;
-
-  if (correct) {
-    document.getElementById("feedback").textContent = "✅ Correct!";
-    streak++;
-  } else {
-    document.getElementById("feedback").textContent = `❌ Wrong! \${a.year} vs \${b.year}`;
-    streak = 0;
-  }
-  updateStreak();
-  setTimeout(() => {
-    shuffle(events);
-    pickPair();
-  }, 1500);
-}
-
-document.getElementById("newGameBtn").addEventListener("click", startGame);
-window.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowLeft") judgeSwipe("left");
-  if (e.key === "ArrowRight") judgeSwipe("right");
-});
-
-window.onload = startGame;
+window.onload = newGame;
