@@ -1,1 +1,48 @@
-/* FULL styles from <style> in version 80 go here — see original HTML */
+body {
+  background: #0b0f14;
+  color: #e5e7eb;
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.topbar {
+  background: #111827;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.game-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+.card {
+  background: #1f2937;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 1rem;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.label {
+  font-size: 1rem;
+  margin: 0.5rem;
+  color: #94a3b8;
+}
+#feedback {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+#streak {
+  margin-top: 0.5rem;
+  color: #38bdf8;
+}

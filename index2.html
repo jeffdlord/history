@@ -3,10 +3,29 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>First Things First — v80</title>
+  <title>First Things First — v81</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <main class="container">
+    <header class="topbar">
+      <div class="logo">First Things First</div>
+      <button id="newGameBtn">New Game</button>
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+        <option value="expert">Expert</option>
+      </select>
+    </header>
+    <div class="game-area">
+      <div class="card" id="cardA"></div>
+      <div class="label">⬅️ Earlier or Later ➡️</div>
+      <div class="card" id="cardB"></div>
+      <div id="feedback"></div>
+      <div id="streak">Streak: 0</div>
+    </div>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
