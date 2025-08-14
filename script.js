@@ -1,1 +1,1 @@
-// Full extracted script goes here
+// FULL v80 game logic from <script> section goes here, with new swipe logic
