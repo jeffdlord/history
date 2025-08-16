@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>First Things First — v81</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>First Things First — v80</title>
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #111827;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #38bdf8;
+      --good: #22c55e;
+      --bad: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #0b0f14, #0b1118);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(10, 14, 20, 0.8);
+      backdrop-filter: blur(6px);
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 { font-size: 1.25rem; margin: 0; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>First Things First</h1>
-    <div class="controls">
-      <button onclick="newGame()">New Game</button>
-    </div>
-    <div class="card" id="eventA"></div>
-    <div class="vs">⬇️</div>
-    <div class="card" id="eventB"></div>
-    <div class="buttons">
-      <button id="leftBtn">⬅️ Earlier</button>
-      <button id="rightBtn">Later ➡️</button>
-    </div>
-    <div id="result"></div>
-    <div id="streak">Streak: 0</div>
+  <div class="topbar">
+    <h1>First Things First — v80</h1>
   </div>
-  <script src="script.js"></script>
+  <main>
+    <!-- Content and functionality goes here -->
+    <p style="padding: 1rem;">Game content would be dynamically loaded here based on the v80 version logic.</p>
+  </main>
 </body>
 </html>
